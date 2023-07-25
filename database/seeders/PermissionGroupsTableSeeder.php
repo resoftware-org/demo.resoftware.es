@@ -14,11 +14,6 @@ class PermissionGroupsTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('permission_groups')->delete();
-        
-        
-        
     }
 }

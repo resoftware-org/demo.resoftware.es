@@ -1,5 +1,6 @@
 The MIT License (MIT)
 
+Copyright (c) re:Idea by re:Software S.L., All rights reserved.
 Copyright (c) DevDojo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

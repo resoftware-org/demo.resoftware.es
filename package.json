@@ -1,5 +1,11 @@
 {
+  "private": true,
   "engines": {
     "node": "17.x"
+  },
+  "scripts": {
+    "build": "cd resources/views/themes/tailwind && npm run dev",
+    "prod": "cd resources/views/themes/tailwind && npm run production",
+    "watch": "cd resources/views/themes/tailwind && npm run watch"
   }
 }

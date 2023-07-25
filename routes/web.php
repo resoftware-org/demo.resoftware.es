@@ -26,3 +26,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 // Wave routes
 Wave::routes();
+
+// re:App routes
+Route::group(['as' => 'reapp.', 'middleware' => 'auth'], function() {
+    Route::get('feed', '\Wave\Http\Controllers\DashboardController@index')->name('feed');
+});

@@ -14,11 +14,6 @@ class ApiKeysTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('api_keys')->delete();
-        
-        
-        
     }
 }

@@ -14,8 +14,6 @@ class DataTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('data_types')->delete();
         
         \DB::table('data_types')->insert(array (
@@ -164,7 +162,5 @@ class DataTypesTableSeeder extends Seeder
                 'updated_at' => '2018-07-03 04:50:28',
             ),
         ));
-        
-        
     }
 }

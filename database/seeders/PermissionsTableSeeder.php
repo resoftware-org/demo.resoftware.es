@@ -14,8 +14,6 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('permissions')->delete();
         
         \DB::table('permissions')->insert(array (
@@ -533,7 +531,5 @@ class PermissionsTableSeeder extends Seeder
                 'permission_group_id' => NULL,
             ),
         ));
-        
-        
     }
 }

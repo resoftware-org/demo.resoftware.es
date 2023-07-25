@@ -2,7 +2,7 @@
     @foreach(Wave\Plan::all() as $plan)
         @php $features = explode(',', $plan->features); @endphp
 
-        <div class="w-full max-w-md px-0 mx-auto mb-6 lg:w-1/3 lg:px-3 lg:mb-0">
+        <div class="w-full max-w-md px-0 mx-auto mb-6 lg:w-1/4 lg:px-3 lg:mb-0">
             <div class="relative flex flex-col h-full mb-10 bg-white border border-gray-200 rounded-lg shadow-xl border-b-none sm:mb-0">
                 <div class="px-10 pt-7">
                     <div class="absolute right-0 inline-block mr-6 transform">
@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="px-10 mt-5">
-                    <span class="font-mono text-5xl font-bold">${{ $plan->price }}</span>
+                    <span class="font-mono text-5xl font-bold">€{{ $plan->price }}</span>
                     <span class="text-lg font-bold text-gray-500">per month</span>
                 </div>
 

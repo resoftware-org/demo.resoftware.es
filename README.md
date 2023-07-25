@@ -1,44 +1,54 @@
-<p align="center"><a href="https://devdojo.com/wave" target="_blank"><img src="https://cdn.devdojo.com/assets/img/github-wave-logo.svg" width="200"></a></p>
-
-> **Note**
->
-> DevDojo is excited to announce the rebranding of our project, Wave. The new iteration will be known as [Foundation](https://devdojo.com/foundation). Until we release the new version you can continue using Wave 2.0 and when the new version is available, you can migrate over to the new platform. This new new version is going to to be epic and it will help in our mission to make the process of building a SAAS as easy as possible. Be sure to [signup here to be notified about updates](https://devdojo.com/foundation) on this project. Good things are coming 😉
-
-<p align="center"><a href="https://www.producthunt.com/posts/wave-2-0" target="_blank"><img src="https://cdn.devdojo.com/images/april2021/upvote-product-hunt-img.png" height="auto" width="auto"></a></p>
+<p align="center"><a href="https://www.producthunt.com/posts/wave-2-0" target="_blank"><img src="https://resoftware.es/wp-content/uploads/reSoftware-S.L.-Facebook-Cover-New.png" height="auto" width="auto"></a></p>
 
 ## Introduction
 
-[Wave](https://devdojo.com/wave) is a Software as a Service Starter Kit that can help you build your next great idea 💰. Wave is built with [Laravel](https://laravel.com), [Voyager](https://voyager.devdojo.com), [TailwindCSS](https://tailwindcss.com), and a few other awesome technologies. Here are some of the awesome features ✨:
+**Connect, Play, Earn - re:Play Your Way to Social Gaming Glory!**
 
- - [Authentication](https://wave.devdojo.com/docs/features/authentication)
- - [User Profiles](https://wave.devdojo.com/docs/features/user-profiles)
- - [User Impersonation](https://wave.devdojo.com/docs/features/user-impersonation)
- - [Subscriptions](https://wave.devdojo.com/docs/features/billing)
- - [Subscription Plans](https://wave.devdojo.com/docs/features/subscription-plans)
- - [User Roles](https://wave.devdojo.com/docs/features/user-roles)
- - [Notifications](https://wave.devdojo.com/docs/features/notifications)
- - [Announcements](https://wave.devdojo.com/docs/features/announcements)
- - [Fully Functional Blog](https://wave.devdojo.com/docs/features/blog)
- - [Out of the Box API](https://wave.devdojo.com/docs/features/api)
- - [Voyager Admin](https://wave.devdojo.com/docs/features/admin)
- - [Customizable Themes](https://wave.devdojo.com/docs/features/themes)
+Welcome to [re:Play](https://play.resoftware.es), the ultimate social gaming platform
+that brings friends and players together like never before! Step into a vibrant world
+where gaming meets social interaction, and embark on thrilling adventures that transcend
+traditional boundaries.
 
+With re:Play, you can connect with friends, old and new, from all corners of the globe,
+and experience the joy of playing together in real-time. Explore a vast array of games
+catering to all tastes and skill levels, whether you're a casual gamer or a seasoned pro.
+
+Compete in challenges, form teams, and celebrate victories together as you unlock
+achievements and rise through the ranks. Join the social gaming revolution and let
+**re:Play** redefine the way you play, connect, and experience the joys of gaming.
+
+### Features
+
+[re:Play](https://play.resoftware.es) uses a Software as a Service Starter Kit based on [Wave](https://devdojo.com/wave). It is built with [Laravel](https://laravel.com), [Voyager](https://voyager.devdojo.com), [TailwindCSS](https://tailwindcss.com), and a few other awesome technologies. Here are some of the awesome features ✨:
+
+ - [Authentication](https://play.resoftware.es/docs/features/authentication)
+ - [User Profiles](https://play.resoftware.es/docs/features/user-profiles)
+ - [User Impersonation](https://play.resoftware.es/docs/features/user-impersonation)
+ - [Subscriptions](https://play.resoftware.es/docs/features/billing)
+ - [Subscription Plans](https://play.resoftware.es/docs/features/subscription-plans)
+ - [User Roles](https://play.resoftware.es/docs/features/user-roles)
+ - [Notifications](https://play.resoftware.es/docs/features/notifications)
+ - [Announcements](https://play.resoftware.es/docs/features/announcements)
+ - [Fully Functional Blog](https://play.resoftware.es/docs/features/blog)
+ - [Out of the Box API](https://play.resoftware.es/docs/features/api)
+ - [Voyager Admin](https://play.resoftware.es/docs/features/admin)
+ - [Customizable Themes](https://play.resoftware.es/docs/features/themes)
 
 ## Demo
-View a live [demo here](https://wave.devdojo.com), or deploy your own instance to DigitalOcean, by clicking the button below.
 
-<a href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/thedevdojo/wave/tree/main" target="_blank"><img src="https://www.deploytodo.com/do-btn-blue.svg" width="240" alt="Deploy to DO"></a>
+View a live [demo here](https://play.resoftware.es), or deploy your own instance to DigitalOcean, by clicking the button below.
 
+<a href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/resoftware-org/demo.resoftware.es/tree/main" target="_blank"><img src="https://www.deploytodo.com/do-btn-blue.svg" width="240" alt="Deploy to DigitalOcean"></a>
 
 ## Installation
 
-To install Wave, you'll want to clone or download this repo:
+To install this software, you'll want to clone or download this repo:
 
 ```
-git clone https://github.com/thedevdojo/wave.git project_name
+git clone https://github.com/resoftware-org/demo.resoftware.es.git project_name
 ```
 
-Next, we can install Wave with these **4 simple steps**:
+Next, we can install re:Software with these **4 simple steps**:
 
 ### 1. Create a New Database
 
@@ -67,7 +77,6 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-
 ### 3. Add Composer Dependencies
 
 First, you should ensure that your web server has the required PHP extensions installed:
@@ -93,16 +102,28 @@ php artisan db:seed
 ```
 <br>
 
-🎉 And that's it! You will now be able to visit your URL and see your Wave application up and running.
+🎉 And that's it! You will now be able to visit your URL and see your re:Software application up and running.
 
+## Authentication
 
-## Watch, Learn, and Build
+The backend can be accessed *only* using user accounts that are assigned the `admin`-role.
 
-We've also got a full video series on how you can setup, build, and configure Wave. 🍿 You can watch first few videos for free, and additional videos will require a [DevDojo Pro](https://devdojo.com/pro) subscription. By subscribing to a [DevDojo Pro](https://devdojo.com/pro) subscription you will also be supporting the ongoing development of this project. It's a win win! 🙌
+The **default admin credentials** are:
 
-[Click here to watch the Wave Video Series](https://devdojo.com/course/wave).
+- Username: `support@resoftware.es`
+- Password: `NotSoSecureAdminPassword`
 
+Please, make sure to edit these *before* you deploy this software in production.
 
 ## Documentation
 
-Checkout the [official documentation here](https://wave.devdojo.com/docs).
+Checkout the [official documentation here](https://play.resoftware.es/docs).
+
+## License
+
+This software is released under the [MIT](./LICENSE) License.
+
+Copyright © 2023-present re:Idea by re:Software SL (https://resoftware.es), All rights reserved.
+Copyright © DevDojo (https://devdojo.com).
+
+

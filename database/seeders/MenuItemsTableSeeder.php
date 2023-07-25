@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use TCG\Voyager\Facades\Voyager;
 
 class MenuItemsTableSeeder extends Seeder
 {
@@ -14,477 +15,113 @@ class MenuItemsTableSeeder extends Seeder
      */
     public function run()
     {
-
-
+        // first truncate
         \DB::table('menu_items')->delete();
 
-        \DB::table('menu_items')->insert(array (
-            0 =>
-            array (
-                'id' => 1,
-                'menu_id' => 1,
-                'title' => 'Dashboard',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-boat',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 1,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2017-11-21 16:23:22',
-                'route' => 'voyager.dashboard',
-                'parameters' => NULL,
-            ),
-            1 =>
-            array (
-                'id' => 2,
-                'menu_id' => 1,
-                'title' => 'Media',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-images',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 5,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-07-03 04:51:09',
-                'route' => 'voyager.media.index',
-                'parameters' => NULL,
-            ),
-            2 =>
-            array (
-                'id' => 3,
-                'menu_id' => 1,
-                'title' => 'Posts',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-news',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 6,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-07-03 04:51:09',
-                'route' => 'voyager.posts.index',
-                'parameters' => NULL,
-            ),
-            3 =>
-            array (
-                'id' => 4,
-                'menu_id' => 1,
-                'title' => 'Users',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-person',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 4,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-07-03 04:51:09',
-                'route' => 'voyager.users.index',
-                'parameters' => NULL,
-            ),
-            4 =>
-            array (
-                'id' => 5,
-                'menu_id' => 1,
-                'title' => 'Categories',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-categories',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 8,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-07-03 04:51:09',
-                'route' => 'voyager.categories.index',
-                'parameters' => NULL,
-            ),
-            5 =>
-            array (
-                'id' => 6,
-                'menu_id' => 1,
-                'title' => 'Pages',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-file-text',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 7,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-07-03 04:51:09',
-                'route' => 'voyager.pages.index',
-                'parameters' => NULL,
-            ),
-            6 =>
-            array (
-                'id' => 7,
-                'menu_id' => 1,
-                'title' => 'Roles',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-lock',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 3,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-07-03 04:51:09',
-                'route' => 'voyager.roles.index',
-                'parameters' => NULL,
-            ),
-            7 =>
-            array (
-                'id' => 8,
-                'menu_id' => 1,
-                'title' => 'Tools',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-tools',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 10,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-07-03 04:51:03',
-                'route' => NULL,
-                'parameters' => NULL,
-            ),
-            8 =>
-            array (
-                'id' => 9,
-                'menu_id' => 1,
-                'title' => 'Menu Builder',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-list',
-                'color' => NULL,
-                'parent_id' => 8,
-                'order' => 1,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-05-20 21:08:37',
-                'route' => 'voyager.menus.index',
-                'parameters' => NULL,
-            ),
-            9 =>
-            array (
-                'id' => 10,
-                'menu_id' => 1,
-                'title' => 'Database',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-data',
-                'color' => NULL,
-                'parent_id' => 8,
-                'order' => 2,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-05-20 21:08:37',
-                'route' => 'voyager.database.index',
-                'parameters' => NULL,
-            ),
-            10 =>
-            array (
-                'id' => 11,
-                'menu_id' => 1,
-                'title' => 'Compass',
-                'url' => '/admin/compass',
-                'target' => '_self',
-                'icon_class' => 'voyager-compass',
-                'color' => NULL,
-                'parent_id' => 8,
-                'order' => 3,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-05-20 21:08:37',
-                'route' => NULL,
-                'parameters' => NULL,
-            ),
-            11 =>
-            array (
-                'id' => 13,
-                'menu_id' => 1,
-                'title' => 'Settings',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-settings',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 11,
-                'created_at' => '2017-11-21 16:23:22',
-                'updated_at' => '2018-07-03 04:51:04',
-                'route' => 'voyager.settings.index',
-                'parameters' => NULL,
-            ),
-            12 =>
-            array (
-                'id' => 14,
-                'menu_id' => 1,
-                'title' => 'Themes',
-                'url' => '/admin/themes',
-                'target' => '_self',
-                'icon_class' => 'voyager-paint-bucket',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 12,
-                'created_at' => '2017-11-21 16:31:00',
-                'updated_at' => '2018-07-03 04:51:04',
-                'route' => NULL,
-                'parameters' => NULL,
-            ),
-            13 =>
-            array (
-                'id' => 15,
-                'menu_id' => 2,
-                'title' => 'Dashboard',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'home',
-                'color' => '#000000',
-                'parent_id' => NULL,
-                'order' => 1,
-                'created_at' => '2017-11-28 14:48:21',
-                'updated_at' => '2018-03-23 16:25:44',
-                'route' => 'wave.dashboard',
-                'parameters' => 'null',
-            ),
-            14 =>
-            array (
-                'id' => 16,
-                'menu_id' => 2,
-                'title' => 'Resources',
-                'url' => '#_',
-                'target' => '_self',
-                'icon_class' => 'info',
-                'color' => '#000000',
-                'parent_id' => NULL,
-                'order' => 2,
-                'created_at' => '2017-11-28 14:49:36',
-                'updated_at' => '2017-11-28 15:11:13',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            15 =>
-            array (
-                'id' => 19,
-                'menu_id' => 2,
-                'title' => 'Next Child',
-                'url' => '/next',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => 18,
-                'order' => 1,
-                'created_at' => '2017-11-28 14:56:58',
-                'updated_at' => '2017-11-28 14:57:10',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            16 =>
-            array (
-                'id' => 20,
-                'menu_id' => 2,
-                'title' => 'Next Child 2',
-                'url' => '/next',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => 18,
-                'order' => 2,
-                'created_at' => '2017-11-28 14:57:07',
-                'updated_at' => '2017-11-28 14:57:12',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            17 =>
-            array (
-                'id' => 21,
-                'menu_id' => 2,
-                'title' => 'Documentation',
-                'url' => '/docs',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => 16,
-                'order' => 1,
-                'created_at' => '2017-11-28 15:08:56',
-                'updated_at' => '2017-11-28 15:09:14',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            18 =>
-            array (
-                'id' => 22,
-                'menu_id' => 2,
-                'title' => 'Videos',
-                'url' => 'https://devdojo.com/series/wave',
-                'target' => '_blank',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => 16,
-                'order' => 2,
-                'created_at' => '2017-11-28 15:09:22',
-                'updated_at' => '2017-11-28 15:09:25',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            19 =>
-            array (
-                'id' => 23,
-                'menu_id' => 2,
-                'title' => 'Support',
-                'url' => 'https://devdojo.com/forums/category/wave',
-                'target' => '_blank',
-                'icon_class' => 'lifesaver',
-                'color' => '#000000',
-                'parent_id' => NULL,
-                'order' => 3,
-                'created_at' => '2017-11-28 15:09:56',
-                'updated_at' => '2018-03-31 18:22:05',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            20 =>
-            array (
-                'id' => 25,
-                'menu_id' => 2,
-                'title' => 'Blog',
-                'url' => '/blog',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => 16,
-                'order' => 3,
-                'created_at' => '2018-03-31 18:22:02',
-                'updated_at' => '2018-03-31 18:22:08',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            21 =>
-            array (
-                'id' => 26,
-                'menu_id' => 3,
-                'title' => 'Home',
-                'url' => '/#',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => NULL,
-                'order' => 99,
-                'created_at' => '2018-04-13 22:29:33',
-                'updated_at' => '2018-08-28 18:39:05',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            22 =>
-            array (
-                'id' => 27,
-                'menu_id' => 3,
-                'title' => 'Features',
-                'url' => '/#features',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => NULL,
-                'order' => 100,
-                'created_at' => '2018-04-13 22:30:26',
-                'updated_at' => '2018-08-28 00:24:49',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            23 =>
-            array (
-                'id' => 28,
-                'menu_id' => 3,
-                'title' => 'Testimonials',
-                'url' => '/#testimonials',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => NULL,
-                'order' => 101,
-                'created_at' => '2018-04-13 22:31:03',
-                'updated_at' => '2018-08-28 00:24:57',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            24 =>
-            array (
-                'id' => 29,
-                'menu_id' => 3,
-                'title' => 'Pricing',
-                'url' => '/#pricing',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => NULL,
-                'order' => 102,
-                'created_at' => '2018-04-13 22:31:52',
-                'updated_at' => '2018-08-28 00:25:04',
-                'route' => NULL,
-                'parameters' => '',
-            ),
-            25 =>
-            array (
-                'id' => 30,
-                'menu_id' => 1,
-                'title' => 'Announcements',
-                'url' => '/admin/announcements',
-                'target' => '_self',
-                'icon_class' => 'voyager-megaphone',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 9,
-                'created_at' => '2018-05-20 21:08:14',
-                'updated_at' => '2018-07-03 04:51:03',
-                'route' => NULL,
-                'parameters' => NULL,
-            ),
-            26 =>
-            array (
-                'id' => 31,
-                'menu_id' => 1,
-                'title' => 'BREAD',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-bread',
-                'color' => '#000000',
-                'parent_id' => 8,
-                'order' => 4,
-                'created_at' => '2018-06-22 20:53:25',
-                'updated_at' => '2018-06-22 20:54:13',
-                'route' => 'voyager.bread.index',
-                'parameters' => NULL,
-            ),
-            27 =>
-            array (
-                'id' => 32,
-                'menu_id' => 1,
-                'title' => 'Plans',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-logbook',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 2,
-                'created_at' => '2018-07-03 04:50:28',
-                'updated_at' => '2018-07-03 04:51:09',
-                'route' => 'voyager.plans.index',
-                'parameters' => NULL,
-            ),
-            28 =>
-            array (
-                'id' => 33,
-                'menu_id' => 3,
-                'title' => 'Blog',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => NULL,
-                'color' => '#000000',
-                'parent_id' => NULL,
-                'order' => 103,
-                'created_at' => '2018-08-24 19:41:14',
-                'updated_at' => '2018-08-24 19:41:14',
-                'route' => 'wave.blog',
-                'parameters' => NULL,
-            ),
-        ));
+        $admin_menu_id = 1;
+        $reapp_menu_id = 2;
+        $guest_menu_id = 3;
 
+        /* 1. Metrics */
+        /*   1.1 Dashboard */
+        /*   1.2 Statistics (not yet implemented) */
+        /* 2. Customers */
+        /*   2.1 Accounts */
+        /* 3. Data */
+        /*   3.1 Categories */
+        /*   3.2 Courses */
+        /*   3.4 Media */
+        /* 4. Communications */
+        /*   4.1 Announcements */
+        /*   4.2 Blog */
+        /* 5. Tools */
+        /*   5.1 Settings */
+        /*   5.2 Themes */
+        /*   5.3 Menu Builder */
+        /*   5.4 Roles */
+        /*   5.5 Database */
+        /*   5.6 Compass */
+        /*   5.7 BREAD */
+        $spec_admin = [
+            'Metrics' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-dashboard', 'order' => 1, 'children' => [
+                'Dashboard' => ['route' => 'wave.dashboard', 'target' => '_self', 'icon_class' => 'voyager-boat', 'order' => 1],
+                //XXX 'Statistics' => [],
+            ]],
 
+            'Customers' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-people', 'order' => 2, 'children' => [
+                'Accounts' => ['route' => 'voyager.users.index', 'target' => '_self', 'icon_class' => 'voyager-person', 'order' => 1],
+            ]],
+
+            'Data' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-upload', 'order' => 3, 'children' => [
+                'Categories' => ['route' => 'voyager.categories.index', 'target' => '_self', 'icon_class' => 'voyager-list', 'order' => 1],
+                'Courses' => ['route' => 'voyager.courses.index', 'target' => '_self', 'icon_class' => 'voyager-controller', 'order' => 2],
+                'Media' => ['route' => 'voyager.media.index', 'target' => '_self', 'icon_class' => 'voyager-images', 'order' => 2],
+            ]],
+
+            'Communications' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-mail', 'order' => 4, 'children' => [
+                'Announcements' => ['route' => 'voyager.announcements.index', 'target' => '_self', 'icon_class' => 'voyager-bubble', 'order' => 1],
+                'Posts' => ['route' => 'voyager.posts.index', 'target' => '_self', 'icon_class' => 'voyager-list-add', 'order' => 2],
+                'Pages' => ['route' => 'voyager.pages.index', 'target' => '_self', 'icon_class' => 'voyager-file-text', 'order' => 3],
+            ]],
+
+            'Tools' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-tools', 'order' => 5, 'children' => [
+                'Settings' => ['route' => 'voyager.settings.index', 'target' => '_self', 'icon_class' => 'voyager-settings', 'order' => 1],
+                'Themes' => ['url' => '/admin/themes', 'target' => '_self', 'icon_class' => 'voyager-settings', 'order' => 2],
+                'Menu Builder' => ['route' => 'voyager.menus.index', 'target' => '_self', 'icon_class' => 'voyager-list', 'order' => 3],
+                'Roles' => ['route' => 'voyager.roles.index', 'target' => '_self', 'icon_class' => 'voyager-lock', 'order' => 4],
+                'Database' => ['route' => 'voyager.database.index', 'target' => '_self', 'icon_class' => 'voyager-data', 'order' => 5],
+                'Compass' => ['route' => 'voyager.compass.index', 'target' => '_self', 'icon_class' => 'voyager-compass', 'order' => 6],
+                'BREAD' => ['route' => 'voyager.bread.index', 'target' => '_self', 'icon_class' => 'voyager-bread', 'order' => 7],
+            ]],
+        ];
+
+        /* 1. Library */
+        /* 2. Courses */
+        $spec_reapp = [
+            'Library' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'home', 'url' => '', 'order' => 1, 'children' => [
+                'Browse' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-logbook', 'order' => 1, 'route' => 'wave.dashboard'],
+                'Latest' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-logbook', 'order' => 2, 'route' => 'reapp.feed'],
+            ]],
+        ];
+
+        /* 1. Home */
+        /* 2. Features */
+        /* 3. Testimonials */
+        /* 4. Pricing */
+        /* 5. Blog */
+        $spec_guest = [
+            'Home' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '', 'order' => 1],
+            'Features' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#features', 'order' => 2],
+            'Testimonials' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#testimonials', 'order' => 3],
+            'Pricing' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#pricing', 'order' => 4],
+            'Blog' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'route' => 'wave.blog', 'order' => 5],
+        ];
+
+        $this->createMenuItems($spec_admin);
+        $this->createMenuItems($spec_reapp);
+        $this->createMenuItems($spec_guest);
+    }
+
+    protected function createMenuItems(array $spec) {
+
+        // create menu items from spec
+        foreach ($spec as $title => $main_menu_config):
+            $main_menu_config['url'] = '';
+
+            // create main menu entry
+            $main = Voyager::model('MenuItem')->updateOrCreate(
+                ['title' => $title, 'menu_id' => $main_menu_config['menu_id']],
+                \Arr::except($main_menu_config, ['title', 'menu_id', 'children'])
+            );
+
+            // create children
+            foreach (($main_menu_config['children'] ?? []) as $subtitle => $sub_menu_config):
+                $sub_menu_config['url'] = '';
+                $sub = Voyager::model('MenuItem')->updateOrCreate(
+                    ['title' => $subtitle, 'menu_id' => $main_menu_config['menu_id'], 'parent_id' => $main->id],
+                    \Arr::except($sub_menu_config, ['title', 'menu_id'])
+                );
+            endforeach;
+        endforeach;
     }
 }

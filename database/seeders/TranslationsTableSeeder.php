@@ -14,8 +14,6 @@ class TranslationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('translations')->delete();
         
         \DB::table('translations')->insert(array (
@@ -351,7 +349,5 @@ class TranslationsTableSeeder extends Seeder
                 'updated_at' => '2017-11-21 16:23:23',
             ),
         ));
-        
-        
     }
 }

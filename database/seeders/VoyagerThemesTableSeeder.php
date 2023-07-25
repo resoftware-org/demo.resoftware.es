@@ -14,8 +14,6 @@ class VoyagerThemesTableSeeder extends Seeder
      */
     public function run()
     {
-
-
         \DB::table('themes')->delete();
 
         \DB::table('themes')->insert(array (
@@ -30,7 +28,5 @@ class VoyagerThemesTableSeeder extends Seeder
                 'updated_at' => '2020-08-23 08:06:45',
             )
         ));
-
-
     }
 }

@@ -14,8 +14,6 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
      */
     public function run()
     {
-
-
         \DB::table('theme_options')->delete();
 
         \DB::table('theme_options')->insert(array (
@@ -24,7 +22,7 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 17,
                 'theme_id' => 1,
                 'key' => 'logo',
-                'value' => '',
+                'value' => 'themes/July2023/j0M6V6ssNFaVuUlanlAh.png', // re:Software logo
                 'created_at' => '2017-11-22 16:54:46',
                 'updated_at' => '2018-02-11 05:02:40'
             ),
@@ -33,7 +31,7 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 18,
                 'theme_id' => 1,
                 'key' => 'home_headline',
-                'value' => 'Welcome to Wave',
+                'value' => 'Welcome to re:Play',
                 'created_at' => '2017-11-25 17:31:45',
                 'updated_at' => '2018-08-28 00:17:41'
             ),
@@ -42,7 +40,7 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 19,
                 'theme_id' => 1,
                 'key' => 'home_subheadline',
-                'value' => 'Start crafting your next great idea.',
+                'value' => 'Connect, Play, Earn - re:Play!',
                 'created_at' => '2017-11-25 17:31:45',
                 'updated_at' => '2017-11-26 07:11:47'
             ),
@@ -51,7 +49,7 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 20,
                 'theme_id' => 1,
                 'key' => 'home_description',
-                'value' => 'Wave will help you rapidly build a Software as a Service. Out of the box Authentication, Subscriptions, Invoices, Announcements, User Profiles, API, and so much more!',
+                'value' => 'With re:Play, you can connect with friends, old and new, from all corners of the globe, and experience the joy of playing together in real-time. Explore a vast array of games catering to all tastes and skill levels, whether you\'re a casual gamer or a seasoned pro.',
                 'created_at' => '2017-11-25 17:31:45',
                 'updated_at' => '2017-11-26 07:09:50'
             ),
@@ -87,12 +85,10 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 24,
                 'theme_id' => 1,
                 'key' => 'footer_logo',
-                'value' => 'themes/August2018/TksmVWMqp5JXUQj8C6Ct.png',
+                'value' => 'themes/July2023/j0M6V6ssNFaVuUlanlAh.png',
                 'created_at' => '2018-08-28 23:12:11',
                 'updated_at' => '2018-08-28 23:12:11'
             )
         ));
-
-
     }
 }

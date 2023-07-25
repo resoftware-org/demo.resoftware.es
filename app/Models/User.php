@@ -10,6 +10,23 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * A list of IDs mapped to their respective
+     * roles' slug.
+     *
+     * @static
+     * @access public
+     * @var array
+     */
+    public static array $ROLES = [
+        "admin" => 1,
+        "trial" => 2,   // level 0
+        "basic" => 3,   // level 1
+        "premium" => 4, // level 2
+        "pro"   => 5,   // level 3
+        "cancelled" => 6,
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

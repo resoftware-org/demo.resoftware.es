@@ -46,18 +46,18 @@ class RolesTableSeeder extends Seeder
             3 =>
             array (
                 'id' => 4,
-                'name' => 'pro',
-                'display_name' => 'Pro Plan',
-                'created_at' => '2018-07-03 16:27:16',
-                'updated_at' => '2018-07-03 17:28:38',
-            ),
-            4 =>
-            array (
-                'id' => 5,
                 'name' => 'premium',
                 'display_name' => 'Premium Plan',
                 'created_at' => '2018-07-03 16:28:42',
                 'updated_at' => '2018-07-03 17:28:32',
+            ),
+            4 =>
+            array (
+                'id' => 5,
+                'name' => 'pro',
+                'display_name' => 'Pro Plan',
+                'created_at' => '2018-07-03 16:27:16',
+                'updated_at' => '2018-07-03 17:28:38',
             ),
             5 =>
             array (
