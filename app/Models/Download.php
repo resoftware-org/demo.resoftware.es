@@ -22,7 +22,7 @@ class Download extends Model
         // order = 6 = download_belongsto_course
 
         5 => ['field' => 'excerpt', 'type' => 'text_area', 'display_name' => 'Excerpt (optional)', 'details' => null, 'order' => 7],
-        6 => ['field' => 'file', 'type' => 'image', 'display_name' => 'Featured Image', 'details' => null, 'order' => 8],
+        6 => ['field' => 'file', 'type' => 'file', 'display_name' => 'Downloadable file', 'details' => null, 'order' => 8],
 
         // dates
         7 => ['field' => 'created_at', 'type' => 'timestamp', 'display_name' => 'created_at', 'details' => null, 'order' => 9],
@@ -36,7 +36,7 @@ class Download extends Model
      */
     static public $BREAD_PERMISSIONS = [
         "id"        => ['required' => 1, 'browse' => 0, 'read' => 0, 'edit' => 0, 'add' => 0, 'delete' => 0],
-        "author_id" => ['required' => 1, 'browse' => 0, 'read' => 1, 'edit' => 1, 'add' => 0, 'delete' => 1],
+        "author_id" => ['required' => 1, 'browse' => 0, 'read' => 1, 'edit' => 1, 'add' => 1, 'delete' => 1],
         "course_id" => ['required' => 1, 'browse' => 0, 'read' => 1, 'edit' => 1, 'add' => 1, 'delete' => 0],
         "title"     => ['required' => 1, 'browse' => 1, 'read' => 1, 'edit' => 1, 'add' => 1, 'delete' => 1],
         "excerpt"   => ['required' => 0, 'browse' => 0, 'read' => 1, 'edit' => 1, 'add' => 1, 'delete' => 1],
@@ -91,7 +91,7 @@ class Download extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     /**
@@ -99,6 +99,6 @@ class Download extends Model
      */
     public function course()
     {
-        return $this->belongsTo('App\Models\Course', 'course_id');
+        return $this->belongsTo(Course::class, 'course_id');
     }
 }

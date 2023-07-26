@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Facades\Voyager;
+use Wave\Category;
 
 class Course extends Model
 {
@@ -132,16 +133,24 @@ class Course extends Model
     /**
      *
      */
-    public function authorId()
+    public function user()
     {
-        return $this->belongsTo('App\Models\User', 'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     /**
      *
      */
-    public function categoryId()
+    public function category()
     {
-        return $this->belongsTo('Wave\Category');
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    /**
+     *
+     */
+    public function downloads()
+    {
+        return $this->hasMany(Download::class, 'course_id', 'id');
     }
 }

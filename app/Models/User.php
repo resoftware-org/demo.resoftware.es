@@ -59,4 +59,12 @@ class User extends Authenticatable
     protected $casts = [
         'trial_ends_at' => 'datetime',
     ];
+
+    /**
+     *
+     */
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'author_id', 'id');
+    }
 }

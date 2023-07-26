@@ -44,7 +44,7 @@ class MenuItemsTableSeeder extends Seeder
         /*   5.7 BREAD */
         $spec_admin = [
             'Metrics' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-dashboard', 'order' => 1, 'children' => [
-                'Dashboard' => ['route' => 'wave.dashboard', 'target' => '_self', 'icon_class' => 'voyager-boat', 'order' => 1],
+                'Dashboard' => ['route' => 'voyager.dashboard', 'target' => '_self', 'icon_class' => 'voyager-boat', 'order' => 1],
                 //XXX 'Statistics' => [],
             ]],
 
@@ -79,10 +79,10 @@ class MenuItemsTableSeeder extends Seeder
         /* 1. Library */
         /* 2. Courses */
         $spec_reapp = [
-            'Library' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'home', 'url' => '', 'order' => 1, 'children' => [
-                'Browse' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-logbook', 'order' => 1, 'route' => 'wave.dashboard'],
-                'Latest' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-logbook', 'order' => 2, 'route' => 'reapp.feed'],
-            ]],
+            'Library' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'home', 'route' => 'wave.dashboard', 'order' => 1],
+            'Feed' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-logbook', 'route' => 'reapp.feed', 'order' => 2],
+            'Calendar' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-calendar', 'route' => 'reapp.calendar', 'order' => 3],
+            'Support' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-chat', 'route' => 'reapp.support', 'order' => 4],
         ];
 
         /* 1. Home */
