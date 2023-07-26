@@ -34,6 +34,13 @@
 				</div>
 			</div>
 
+			<div class="mt-5">
+				<label for="about" class="block text-sm font-medium leading-5 text-gray-700">Date of birth</label>
+				<div class="mt-1 rounded-md">
+					{!! profile_field('date', 'date_of_birth') !!}
+				</div>
+			</div>
+
 			<div class="flex justify-end w-full">
 				<button class="flex self-end justify-center w-auto px-4 py-2 mt-5 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-wave-600 hover:bg-wave-500 focus:outline-none focus:border-wave-700 focus:shadow-outline-wave active:bg-wave-700" dusk="update-profile-button">Save</button>
 			</div>

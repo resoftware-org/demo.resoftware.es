@@ -55,6 +55,7 @@ class MenuItemsTableSeeder extends Seeder
             'Data' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-upload', 'order' => 3, 'children' => [
                 'Categories' => ['route' => 'voyager.categories.index', 'target' => '_self', 'icon_class' => 'voyager-list', 'order' => 1],
                 'Courses' => ['route' => 'voyager.courses.index', 'target' => '_self', 'icon_class' => 'voyager-controller', 'order' => 2],
+                'Downloads' => ['route' => 'voyager.downloads.index', 'target' => '_self', 'icon_class' => 'voyager-cloud-download', 'order' => 2],
                 'Media' => ['route' => 'voyager.media.index', 'target' => '_self', 'icon_class' => 'voyager-images', 'order' => 2],
             ]],
 
@@ -66,7 +67,7 @@ class MenuItemsTableSeeder extends Seeder
 
             'Tools' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-tools', 'order' => 5, 'children' => [
                 'Settings' => ['route' => 'voyager.settings.index', 'target' => '_self', 'icon_class' => 'voyager-settings', 'order' => 1],
-                'Themes' => ['url' => '/admin/themes', 'target' => '_self', 'icon_class' => 'voyager-settings', 'order' => 2],
+                'Themes' => ['url' => '/admin/themes', 'target' => '_self', 'icon_class' => 'voyager-paint-bucket', 'order' => 2],
                 'Menu Builder' => ['route' => 'voyager.menus.index', 'target' => '_self', 'icon_class' => 'voyager-list', 'order' => 3],
                 'Roles' => ['route' => 'voyager.roles.index', 'target' => '_self', 'icon_class' => 'voyager-lock', 'order' => 4],
                 'Database' => ['route' => 'voyager.database.index', 'target' => '_self', 'icon_class' => 'voyager-data', 'order' => 5],
@@ -116,7 +117,8 @@ class MenuItemsTableSeeder extends Seeder
 
             // create children
             foreach (($main_menu_config['children'] ?? []) as $subtitle => $sub_menu_config):
-                $sub_menu_config['url'] = '';
+                if (!isset($sub_menu_config['url'])) $sub_menu_config['url'] = '';
+
                 $sub = Voyager::model('MenuItem')->updateOrCreate(
                     ['title' => $subtitle, 'menu_id' => $main_menu_config['menu_id'], 'parent_id' => $main->id],
                     \Arr::except($sub_menu_config, ['title', 'menu_id'])

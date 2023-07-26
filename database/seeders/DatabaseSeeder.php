@@ -38,6 +38,9 @@ class DatabaseSeeder extends Seeder
         $this->call(VoyagerThemeOptionsTableSeeder::class);
         $this->call(WaveKeyValuesTableSeeder::class);
         fixPostgresSequence();
+
+        // custom re:Play seeders
+        $this->call(ReplayTableSeeder::class);
     }
 }
 

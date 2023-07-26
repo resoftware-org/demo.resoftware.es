@@ -26,6 +26,15 @@ class WaveKeyValuesTableSeeder extends Seeder
                 'key' => 'about',
                 'value' => 'Hello I am the re:Software Support user. You can chat with me if you have any queries about this platform.',
             ),
+            1 =>
+            array (
+                'id' => 11,
+                'type' => 'text_area',
+                'keyvalue_id' => 1,
+                'keyvalue_type' => 'users',
+                'key' => 'date_of_birth',
+                'value' => '1988-08-29',
+            ),
         ));
     }
 }

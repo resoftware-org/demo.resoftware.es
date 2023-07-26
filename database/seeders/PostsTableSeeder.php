@@ -21,17 +21,20 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 6,
                 'author_id' => 1,
-                'category_id' => 1, // "Reviews"
-                'title' => 'Game review for F1 23',
-                'seo_title' => 'Game review for F1 23',
+                'category_id' => 2, // "News"
+                'title' => 'The e-Learning Revolution: Unleashing the Power of Online Courses',
+                'seo_title' => 'The e-Learning Revolution: Unleashing the Power of Online Courses',
                 'excerpt' => NULL,
-                'body' => '<p>F1 23, the latest installment in the iconic Formula 1 racing game series, is an exhilarating and pulse-pounding experience that takes virtual racing to a whole new level. Developed with meticulous attention to detail and an unwavering commitment to authenticity, F1 23 captures the essence of Formula 1 racing like no other.</p>
-<p>Visually stunning, the game\'s graphics are a feast for the eyes. From the meticulously crafted race tracks to the hyper-realistic rendering of the iconic F1 cars, every detail is so lifelike that you\'d swear you were watching a real-world race unfold. The attention to detail extends to the dynamic weather system, which adds an extra layer of challenge as players must adapt their strategies to changing track conditions.</p>
-<p>F1 23 boasts an extensive roster of drivers and teams, including the latest season\'s lineup, making it the ultimate dream-come-true for F1 enthusiasts. Players can step into the shoes of their favorite drivers or create their own custom avatar, and with a career mode that spans multiple seasons, the game offers an immersive experience that keeps players engaged for hours on end.</p>
-<p>The gameplay is where F1 23 truly shines. The controls are responsive and precise, offering a perfect balance between accessibility for newcomers and depth for veteran players. As you race wheel-to-wheel with AI opponents or engage in competitive multiplayer mode, you\'ll feel the adrenaline rush of every high-speed corner and strategic overtaking maneuver. The game\'s AI also impresses, with opponents displaying a mix of aggression and intelligence, ensuring that each race is a challenge.</p>
-<p>Beyond the core racing experience, F1 23 also offers an array of additional features, including a robust car customization system, where players can fine-tune their vehicle\'s performance to gain a competitive edge. The multiplayer mode is a standout, providing endless hours of competitive fun as you battle it out with other players from around the world.</p>
-<p>However, F1 23 is not without its minor drawbacks. Loading times can be a bit lengthy, especially when transitioning between menus, and some players have reported occasional bugs that affect immersion. Nonetheless, the developers have shown commendable commitment to addressing issues through regular updates and patches.</p>
-<p>In conclusion, F1 23 is a must-play for racing enthusiasts and gamers alike. With its stunning visuals, immersive gameplay, and an ever-growing community, the game continues to push the boundaries of what a racing simulator can achieve. Strap in, rev your engines, and prepare for an adrenaline-fueled journey into the thrilling world of Formula 1 racing.</p>',
+                'body' => '<p>In recent years, the landscape of education has undergone a transformative shift with the rise of online courses and e-learning platforms. This educational revolution has opened up a world of opportunities for both learners and educators, redefining traditional teaching methods and expanding access to knowledge like never before. From specialized skills to academic subjects, teaching online has become a thriving industry, empowering individuals across the globe to learn at their own pace, on their own terms.</p>
+<h2>The rise of eLearning platforms</h2>
+<p>The internet has become a vast repository of information, and e-learning platforms have emerged to harness this digital wealth and transform it into interactive, engaging, and accessible educational experiences. These platforms offer a wide range of courses, catering to diverse interests and fields of study. Whether you\'re looking to learn a new language, master coding skills, or pursue a degree from a renowned university, there\'s an online course tailored to your needs.</p>
+<p>For educators, teaching online offers a host of advantages that traditional classroom settings may not provide. Here are some key benefits:</p>
+<p>1. Global Reach: With online courses, educators can reach learners worldwide, breaking down geographical barriers and creating a truly global classroom. This not only widens the audience but also enriches the learning experience with diverse perspectives.</p>
+<p>2. Flexibility and Convenience: Online teaching allows instructors to create flexible learning schedules, accommodating learners with busy lifestyles or time zone differences. Students can access course materials and lectures at their convenience, facilitating self-paced learning.</p>
+<p>3. Personalization: E-learning platforms often provide tools for personalized learning, enabling educators to tailor their teaching methods and materials to suit individual student needs and learning styles.</p>
+<p>4. Cost-Effectiveness: Compared to traditional brick-and-mortar institutions, online courses can be more cost-effective for both educators and learners. There are reduced expenses related to physical infrastructure, and students save on commuting and accommodation costs.</p>
+<p>5. Real-Time Feedback: Online platforms offer instant feedback and assessment tools, allowing instructors to monitor student progress and identify areas that require more attention.</p>
+                ',
                 'image' => 'posts/March2018/h86hSqPMkT9oU8pjcrSu.jpg',
                 'slug' => 'game-review-f1-23',
                 'meta_description' => 'F1 23, the latest installment in the iconic Formula 1 racing game series, is an exhilarating and pulse-pounding experience that takes virtual racing to a whole new level.',
@@ -45,7 +48,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'author_id' => 1,
-                'category_id' => 2, // "Stories"
+                'category_id' => 2, // "News"
                 'title' => 'Embracing the Metaverse: A New Frontier of Digital Exploration',
                 'seo_title' => 'Embracing the Metaverse: A New Frontier of Digital Exploration',
                 'excerpt' => NULL,
