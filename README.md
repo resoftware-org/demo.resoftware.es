@@ -123,7 +123,7 @@ Checkout the [official documentation here](https://play.resoftware.es/docs).
 
 This software is released under the [MIT](./LICENSE) License.
 
-Copyright © 2023-present re:Idea by re:Software SL (https://resoftware.es), All rights reserved.
+Copyright © 2023-present re:Play by re:Software SL (https://resoftware.es).
 Copyright © DevDojo (https://devdojo.com).
 
 

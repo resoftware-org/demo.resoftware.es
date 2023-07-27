@@ -6,7 +6,7 @@
     <?php /* Row #1 - 2 Cards */ ?>
     <div class="flex flex-col px-8 mx-auto my-6 lg:flex-row max-w-7xl xl:px-5">
 
-        <?php /* Box #1 - Welcome to re:Media */ ?>
+        <?php /* Box #1 - Welcome to re:Play */ ?>
         <div class="flex flex-col justify-start flex-1 mb-5 overflow-hidden bg-white border rounded-lg lg:mr-3 lg:mb-0 border-gray-150">
             <div class="flex flex-wrap items-center justify-between p-5 bg-white border-b border-gray-150 sm:flex-no-wrap">
                 <div class="flex items-center justify-center w-12 h-12 mr-5 rounded-lg bg-wave-100">
@@ -14,18 +14,18 @@
                 </div>
                 <div class="relative flex-1">
                     <h3 class="text-lg font-medium leading-6 text-gray-700">
-                        Welcome to re:Media
+                        Welcome to re:Play
                     </h3>
                     <p class="text-sm leading-5 text-gray-500 mt">
-                        Smart media management solution
+                        Smart online courses solution
                     </p>
                 </div>
             </div>
             <div class="relative p-5">
                 <p class="text-base leading-loose text-gray-500">
-                Manage all your media from one place and securely, then connect
+                Manage all your courses from one place and securely, then connect
                 any of your devices to stream, share or just watch your content.<br /><br />
-                Finally an easy way to share your media files with family and friends.
+                Finally an easy way to share your online courses with colleagues.
                 </p>
                 <span class="inline-flex mt-5 rounded-md shadow-sm">
                     <a href="{{ url('docs') }}" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="relative flex-1">
                     <h3 class="text-lg font-medium leading-6 text-gray-700">
-                        Your media files, anywhere!
+                        Your online courses, anywhere!
                     </h3>
                     <p class="text-sm leading-5 text-gray-500 mt">
                         Don't compromise security for comfort!
@@ -52,9 +52,9 @@
             </div>
             <div class="relative p-5">
                 <p class="text-base leading-loose text-gray-500">
-                Finally an easy way to share your media files with family and friends,
+                Finally an easy way to share your online courses with colleagues,
                 without compromising your privacy or the security of your files.<br /><br />
-                Share your media files to your devices or using temporary links.
+                Share your online courses to your devices or using temporary links.
                 </p>
                 <span class="inline-flex mt-5 rounded-md shadow-sm">
                     <a href="https://devdojo.com/course/wave" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50">
@@ -79,14 +79,14 @@
                         Encrypted data vaults
                     </h3>
                     <p class="text-sm leading-5 text-gray-500 mt">
-                        Secure communication for your media files
+                        Secure communication for your courses
                     </p>
                 </div>
             </div>
             <div class="relative p-5">
                 <p class="text-base leading-loose text-gray-500">
                 Use encrypted data vaults to store and group files, folders and
-                archives. You can upload files to your re:Media Cloud from anywhere. <br /><br />
+                archives. You can upload files to your re:Play Cloud from anywhere. <br /><br />
                 This software is available for: Windows, Linux, MacOS, Android, iOS.
                 </p>
                 <span class="inline-flex mt-5 rounded-md shadow-sm">
@@ -108,14 +108,14 @@
                         No installation needed
                     </h3>
                     <p class="text-sm leading-5 text-gray-500 mt">
-                        Use any browser to access your media files
+                        Use any browser to access your online courses
                     </p>
                 </div>
             </div>
             <div class="relative p-5">
                 <p class="text-base leading-loose text-gray-500">
                 Using next-generation Web technologies, we provide a secure
-                in-Browser experience such that re:Media is available from anywhere. <br /><br />
+                in-Browser experience such that re:Play is available from anywhere. <br /><br />
                 Use your Laptop, Tablet, Smartphone, Smart TV, anything works!
                 </p>
                 <span class="inline-flex mt-5 rounded-md shadow-sm">
