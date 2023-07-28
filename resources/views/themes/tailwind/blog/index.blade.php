@@ -1,7 +1,6 @@
-@extends('theme::layouts.app')
+@extends('theme::layouts.guest')
 
 @section('content')
-
 
 <div class="relative px-8 pt-8 pb-20 mx-auto xl:px-5 max-w-7xl sm:px-6 lg:pt-10 lg:pb-28">
     <div class="absolute inset-0">
@@ -15,15 +14,6 @@
 			<p class="mt-3 text-xl leading-7 text-gray-500 sm:mt-4">
 				Check out some of our latest blog posts below.
 			</p>
-			<ul class="flex self-start inline w-auto px-3 py-1 mt-3 text-xs font-medium text-gray-600 bg-blue-100 rounded-md">
-				<li class="mr-4 font-bold text-blue-600 uppercase">Categories:</li>
-				@foreach($categories as $cat)
-					<li class="@if(isset($category) && isset($category->slug) && ($category->slug == $cat->slug)){{ 'text-blue-700' }}@endif"><a href="{{ route('wave.blog.category', $cat->slug) }}">{{ $cat->name }}</a></li>
-					@if(!$loop->last)
-						<li class="mx-2">&middot;</li>
-					@endif
-				@endforeach
-			</ul>
 		</div>
         <div class="grid gap-5 mx-auto mt-12 sm:grid-cols-2 lg:grid-cols-3">
 

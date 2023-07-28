@@ -1,5 +1,6 @@
 @extends('theme::layouts.app')
 
+@section('title', 'Profile of @' . $user->username)
 
 @section('content')
 

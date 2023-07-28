@@ -79,8 +79,8 @@ class MenuItemsTableSeeder extends Seeder
         /* 1. Library */
         /* 2. Courses */
         $spec_reapp = [
-            'Library' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'home', 'route' => 'wave.dashboard', 'order' => 1],
-            'Feed' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-logbook', 'route' => 'reapp.feed', 'order' => 2],
+            'Dashboard' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'home', 'route' => 'wave.dashboard', 'order' => 1],
+            'My Library' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-logbook', 'route' => 'reapp.library', 'order' => 2],
             'Calendar' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-calendar', 'route' => 'reapp.calendar', 'order' => 3],
             'Support' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-chat', 'route' => 'reapp.support', 'order' => 4],
         ];

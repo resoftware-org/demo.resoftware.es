@@ -1,5 +1,7 @@
 @extends('theme::layouts.app')
 
+@section('title', 'Settings')
+
 @section('content')
 
 	<div class="flex px-8 mx-auto my-6 max-w-7xl xl:px-5">

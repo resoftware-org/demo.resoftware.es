@@ -55,7 +55,7 @@ class CategoriesTableSeeder extends Seeder
         endforeach;
     }
 
-    protected function createCategory($name, $slug, array $children = []): array {
+    protected function createCategory($slug, $name, array $children = []): array {
         return [
             'name' => $name,
             'slug' => $slug,

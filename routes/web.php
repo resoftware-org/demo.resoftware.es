@@ -29,7 +29,7 @@ Wave::routes();
 
 // re:App routes
 Route::group(['as' => 'reapp.', 'middleware' => 'auth'], function() {
-    Route::get('feed', '\Wave\Http\Controllers\DashboardController@index')->name('feed');
-    Route::get('calendar', '\Wave\Http\Controllers\DashboardController@index')->name('calendar');
+    Route::get('library', '\App\Http\Controllers\LibraryController@index')->name('library');
+    Route::get('calendar', '\App\Http\Controllers\CalendarController@index')->name('calendar');
     Route::get('support', '\Wave\Http\Controllers\DashboardController@index')->name('support');
 });
