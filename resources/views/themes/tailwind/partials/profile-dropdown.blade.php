@@ -23,7 +23,7 @@
         x-transition:leave="transition duration-50 ease-in scale-100"
         x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-95"
-        class="absolute top-0 right-0 w-56 mt-20 origin-top-right transform rounded-xl" x-cloak>
+        class="absolute top-0 right-0 w-56 mt-20 origin-top-right transform rounded-xl z-50" x-cloak>
 
         <div class="bg-white border border-gray-100 shadow-md rounded-xl" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
             <a href="{{ route('wave.profile', auth()->user()->username) }}" class="block px-4 py-3 text-gray-700 hover:text-gray-800">

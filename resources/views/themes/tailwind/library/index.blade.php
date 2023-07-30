@@ -4,6 +4,8 @@
 
 @section('content')
 
+<!-- FEATURED TEACHERS -->
+
 <div
     class="w-full flex flex-col lg:flex-row"
     x-data="reapp_modals()"
@@ -17,7 +19,10 @@
         </div>
         @else
             @foreach($courses as $course)
-        <div class="flex flex-col w-full mb-6 px-2 py-4 border-b border-b-slate-200 lg:px-8 bg-transparent hover:bg-slate-200 hover:cursor-pointer active:bg-slate-200">
+        <div
+            x-on:click="toggleModalBox('course-details-modal-{{$course->id}}')"
+            class="flex flex-col w-full mb-6 px-2 py-4 border-b border-b-slate-200 lg:px-8 bg-transparent hover:bg-slate-200 hover:cursor-pointer active:bg-slate-200"
+        >
             <div class="flex flex-row items-start lg:items-center">
                 <div class="flex flex-col mt-4 w-1/3 lg:w-1/6">
                     <img class="w-24 h-24 rounded-md" src="/storage/{{$course->image}}" alt="{{$course->title}}" />
@@ -28,18 +33,18 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center mt-4 lg:mt-1">
-                <div class="flex hide lg:block lg:w-1/3">
+            <div class="flex flex-col items-center justify-center lg:flex-row lg:mt-1">
+                <div class="flex w-full lg:w-1/3">
                     <button
-                        x-on:click="toggleModalBox('course-details-modal-{{$course->id}}')"
-                        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mt-2 px-2 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        x-on:click="toggleModalBox('course-details-modal-{{$course->id}}'); event.stopPropagation();"
+                        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mt-1 lg:mt-2 px-1 lg:px-2 py-1 lg:py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button"
                     >
-                        Watch Trailer
+                        <span>Watch Trailer</span>
                     </button>
                 </div>
-                <div class="flex w-full items-center justify-center mx-auto lg:w-2/3">
-                    <div><span class="font-bold">{{ $course->title }}</span>, by {{ $course->user->name }}</div>
+                <div class="flex w-full mt-2 lg:mt-0 items-center justify-center mx-auto lg:w-2/3">
+                    <div><span class="text-xl font-bold">{{ $course->title }}</span>, by {{ $course->user->name }}</div>
                     <div class="flex text-sm transition duration-150 ease-in-out border-2 border-transparent focus:outline-none focus:border-gray-300 ml-3">
                         <img class="w-12 h-12 rounded-full" src="{{ auth()->user()->avatar() . '?' . time() }}" alt="{{ auth()->user()->name }}'s Avatar">
                     </div>
@@ -52,11 +57,11 @@
         <div
             id="course-details-modal-{{$course->id}}"
             style=" background-color: rgba(0, 0, 0, 0.9)"
-            class="fixed z-40 top-0 right-0 left-0 bottom-0 h-full w-full"
+            class="fixed z-40 top-0 right-0 left-0 bottom-0 h-auto w-full"
             x-show.transition.opacity="'course-details-modal-{{$course->id}}' in modalStateById && modalStateById['course-details-modal-{{$course->id}}']"
         >
             <div class="relative w-full max-h-full">
-                <div class="p-4 mx-auto relative absolute left-0 right-0 overflow-hidden mt-12">
+                <div class="p-4 mx-auto absolute left-0 right-0 mt-1 lg:mt-12">
                     <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                             Details for "{{$course->title}}"
@@ -70,13 +75,13 @@
                     </div>
                     <div class="flex flex-col p-6 space-y-6 lg:flex-row">
                         <div class="flex flex-col w-full text-base leading-relaxed text-gray-500 pr-6 dark:text-gray-400 lg:w-1/2 lg:border-r lg:border-r-slate-100">
-                            <p class="text-justify">{{$course->description}}</p>
+                            <p class="hidden lg:block text-justify">{{$course->description}}</p>
 
-                            <div class="flex flex-col items-center justify-center my-6 lg:flex-row">
-                                <div class="w-full lg:w-1/6">
+                            <div class="flex flex-col items-center justify-center my-1 lg:flex-row lg:my-6">
+                                <div class="w-1/3 lg:w-1/6">
                                     <img class="w-24 h-24 rounded-md" src="/storage/{{$course->image}}" alt="{{$course->title}}" />
                                 </div>
-                                <div class="w-full lg:w-2/6">
+                                <div class="w-3/4 mt-6 lg:w-2/6 lg:mt-0">
                                     <div class="text-left">
                                         <span>Author: </span>
                                         <span>{{$course->user->name}}</span>
@@ -93,7 +98,7 @@
                                 </div>
                             </div>
 
-                            <p class="text-justify">
+                            <p class="hidden lg:block text-justify">
                                 You have not yet started this online course. Are you interested in its content? You can 
                                 simply <a href="#" class="underline text-blue-400 hover:text-blue-700">Join the Classroom</a> 
                                 here and start your new Learning Journey. Our software makes sure that you keep progressing 
@@ -127,18 +132,18 @@
 </div>
 
 <script>
-    function reapp_modals() {
-        return {
-            modalStateById: {},
+function reapp_modals() {
+    return {
+        modalStateById: {},
 
-            toggleModalBox(id) {
-                // toggle the modal box or init
-                this.modalStateById[id] = id in this.modalStateById
-                    ? !this.modalStateById[id]
-                    : true;
-            }
-        };
-    }
+        toggleModalBox(id) {
+            // toggle the modal box or init
+            this.modalStateById[id] = id in this.modalStateById
+                ? !this.modalStateById[id]
+                : true;
+        }
+    };
+}
 </script>
 
 <script src="https://player.vimeo.com/api/player.js"></script>

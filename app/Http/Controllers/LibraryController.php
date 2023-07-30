@@ -23,7 +23,14 @@ class LibraryController extends Controller
      */
     public function index()
     {
+        // fetch
         $courses = Course::paginate();
-        return view('theme::library.index', compact("courses"));
+        $featured= Course::featured()->take(3);
+
+        // prepare
+        return view('theme::library.index', compact(
+            "courses",
+            "featured"
+        ));
     }
 }

@@ -153,4 +153,12 @@ class Course extends Model
     {
         return $this->hasMany(Download::class, 'course_id', 'id');
     }
+
+    /**
+     *
+     */
+    public function scopeFeatured($query)
+    {
+        return $query->where("courses.featured", true);
+    }
 }

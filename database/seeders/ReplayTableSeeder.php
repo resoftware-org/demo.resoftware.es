@@ -11,10 +11,14 @@ use TCG\Voyager\Models\DataRow;
 // models
 use App\Models\Course;
 use App\Models\Download;
+use App\Models\Reservation;
+use App\Models\Schedule;
 
 // policies
 use App\Policies\CoursePolicy;
 use App\Policies\DownloadPolicy;
+use App\Policies\ReservationPolicy;
+use App\Policies\SchedulePolicy;
 
 class ReplayTableSeeder extends Seeder
 {
@@ -60,6 +64,40 @@ class ReplayTableSeeder extends Seeder
         $this->createBreadRows($downloads_bread, Download::$BREAD_FIELDS, Download::$BREAD_PERMISSIONS);
         $this->createRelationships($downloads_bread, Download::$BREAD_RELATIONSHIPS);
         $this->createPermissions("downloads");
+
+        /***********************************************************************
+         * SCHEDULES
+         **********************************************************************/
+        $schedules_bread = $this->createBread(
+            "schedules",
+            "Schedule",
+            "Schedules",
+            Schedule::class,
+            SchedulePolicy::class,
+            'voyager-calendar',
+            'id',
+            'course_id'
+        );
+        $this->createBreadRows($schedules_bread, Schedule::$BREAD_FIELDS, Schedule::$BREAD_PERMISSIONS);
+        $this->createRelationships($schedules_bread, Schedule::$BREAD_RELATIONSHIPS);
+        $this->createPermissions("schedules");
+
+        /***********************************************************************
+         * RESERVATIONS
+         **********************************************************************/
+        $reservations_bread = $this->createBread(
+            "reservations",
+            "Reservation",
+            "Reservations",
+            Reservation::class,
+            ReservationPolicy::class,
+            'voyager-check-circle',
+            'id',
+            'course_id'
+        );
+        $this->createBreadRows($reservations_bread, Reservation::$BREAD_FIELDS, Reservation::$BREAD_PERMISSIONS);
+        $this->createRelationships($reservations_bread, Reservation::$BREAD_RELATIONSHIPS);
+        $this->createPermissions("reservations");
     }
 
     /**

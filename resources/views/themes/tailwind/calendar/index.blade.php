@@ -36,7 +36,7 @@
                                 @click="month++; getNoOfDays()">
                                 <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>									  
+                                </svg>
                             </button>
                         </div>
                     </div>	
@@ -161,23 +161,16 @@
             days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 
             events: [
-                {
-                    event_date: new Date(2020, 3, 1),
-                    event_title: "April Fool's Day",
-                    event_theme: 'blue'
-                },
+
+                @foreach ($schedules as $schedule)
 
                 {
-                    event_date: new Date(2020, 3, 10),
-                    event_title: "Birthday",
-                    event_theme: 'red'
+                    event_date: new Date('{{$schedule->course_opens_at}}'),
+                    event_title: "{{$schedule->course->title}}",
+                    event_theme: "blue"
                 },
 
-                {
-                    event_date: new Date(2020, 3, 16),
-                    event_title: "Upcoming Event",
-                    event_theme: 'green'
-                }
+                @endforeach
             ],
             event_title: '',
             event_date: '',
@@ -186,7 +179,7 @@
             themes: [
                 {
                     value: "blue",
-                    label: "Blue Theme"
+                    label: "My schedules"
                 },
                 {
                     value: "red",

@@ -30,7 +30,10 @@ class MenuItemsTableSeeder extends Seeder
         /* 3. Data */
         /*   3.1 Categories */
         /*   3.2 Courses */
-        /*   3.4 Media */
+        /*   3.3 Downloads */
+        /*   3.4 Schedules */
+        /*   3.5 Reservations */
+        /*   3.6 Media */
         /* 4. Communications */
         /*   4.1 Announcements */
         /*   4.2 Blog */
@@ -54,8 +57,10 @@ class MenuItemsTableSeeder extends Seeder
 
             'Data' => ['menu_id' => $admin_menu_id, 'target' => '_self', 'icon_class' => 'voyager-upload', 'order' => 3, 'children' => [
                 'Categories' => ['route' => 'voyager.categories.index', 'target' => '_self', 'icon_class' => 'voyager-list', 'order' => 1],
-                'Courses' => ['route' => 'voyager.courses.index', 'target' => '_self', 'icon_class' => 'voyager-controller', 'order' => 2],
+                'Courses' => ['route' => 'voyager.courses.index', 'target' => '_self', 'icon_class' => 'voyager-certificate', 'order' => 2],
                 'Downloads' => ['route' => 'voyager.downloads.index', 'target' => '_self', 'icon_class' => 'voyager-cloud-download', 'order' => 2],
+                'Schedules' => ['route' => 'voyager.schedules.index', 'target' => '_self', 'icon_class' => 'voyager-calendar', 'order' => 2],
+                'Reservations' => ['route' => 'voyager.reservations.index', 'target' => '_self', 'icon_class' => 'voyager-check-circle', 'order' => 2],
                 'Media' => ['route' => 'voyager.media.index', 'target' => '_self', 'icon_class' => 'voyager-images', 'order' => 2],
             ]],
 

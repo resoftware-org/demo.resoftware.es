@@ -23,7 +23,7 @@
             x-transition:leave="transition duration-50 ease-in scale-100"
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95"
-            class="absolute top-0 right-0 max-w-lg mt-20 overflow-hidden origin-top-right transform rounded-lg shadow-lg max-w-7xl w-104" x-cloak>
+            class="absolute top-0 right-0 max-w-lg mt-20 overflow-hidden origin-top-right transform rounded-lg shadow-lg max-w-7xl w-104 z-50" x-cloak>
     @else
         <div class="relative top-0 right-0 w-full my-8 overflow-hidden origin-top max-w-7xl">
     @endif

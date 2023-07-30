@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedule;
+
 class CalendarController extends Controller
 {
     /**
@@ -21,6 +23,12 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        return view('theme::calendar.index');
+        // fetch
+        $schedules = Schedule::byMonth(date("m"))->byAuthor(auth()->user())->get();
+
+        // prepare
+        return view('theme::calendar.index', compact(
+            "schedules",
+        ));
     }
 }
