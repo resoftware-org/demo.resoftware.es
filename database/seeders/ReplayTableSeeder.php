@@ -191,11 +191,27 @@ class ReplayTableSeeder extends Seeder
         Permission::firstOrCreate(['key' => 'delete_'.$table_name, 'table_name' => $table_name]);
 
         if (!$exists) { // only once
-            $role = Voyager::model('Role')->where('name', config('voyager.bread.default_role'))->firstOrFail();
+            $role = Voyager::model('Role')->where('name', 'admin')->firstOrFail();
             $permissions = Voyager::model('Permission')->where(['table_name' => $table_name])->get()->pluck('id')->all();
 
-            // Assign permission to default role
+            // Grant all privileges to admin
             $role->permissions()->attach($permissions);
+
+            // all roles that are not admin and cancelled
+            $roles = Voyager::model('Role')->whereNotIn('name', [
+                'admin',
+                'cancelled',
+            ])->get();
+
+            // Assign browse capacity to other roles
+            foreach ($roles as $role) :
+                $grant_browsing = Voyager::model('Permission')->where([
+                    'key' => 'browse_' . $table_name,
+                ])->get()->pluck('id')->all();
+
+                // Grant BROWSE privileges to end-users
+                $role->permissions()->attach($grant_browsing);
+            endforeach;
         }
     }
 }
