@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Schedule;
+use App\Models\Reservation;
 
 class CalendarController extends Controller
 {
@@ -23,12 +25,20 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        // fetch
-        $schedules = Schedule::byMonth(date("m"))->byAuthor(auth()->user())->get();
+        // prepare
+        $user  = auth()->user();
+        $month = date("m");
+
+        if ($user->subscribed("mentor") || $user->subscribed("college"))
+            // teachers see own schedules
+            $schedules = Schedule::byMonth($month)->byAuthor($user)->get();
+        else
+            // students see reserved schedules
+            $schedules = Schedule::byMonth($month)->withReservation($user)->get();
 
         // prepare
         return view('theme::calendar.index', compact(
-            "schedules",
+            "schedules"
         ));
     }
 }

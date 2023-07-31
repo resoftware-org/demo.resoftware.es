@@ -133,8 +133,18 @@ class Schedule extends Model
     /**
      *
      */
-    public function scopeByAuthor(Builder $query, User $author)
+    public function scopeByAuthor(Builder $query, User $user)
     {
-        return $query->where('author_id', $author->id);
+        return $query->where("schedules.author_id", $user->id);
+    }
+
+    /**
+     *
+     */
+    public function scopeWithReservation(Builder $query, User $user)
+    {
+        return $query
+            ->join("reservations", "reservations.schedule_id", "schedules.id")
+            ->where("reservations.user_id", $user->id);
     }
 }

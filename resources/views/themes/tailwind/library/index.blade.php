@@ -9,7 +9,7 @@
 <div
     class="w-full flex flex-col lg:flex-row"
     x-data="reapp_modals()"
-    x-init="{}"
+    x-init="[]"
     x-cloak
 >
     <div class="flex flex-col mx-auto my-6 p-2 w-full lg:w-2/3">

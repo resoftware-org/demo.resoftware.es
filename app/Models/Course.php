@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Facades\Voyager;
+use Illuminate\Database\Eloquent\Builder;
 use Wave\Category;
 
 class Course extends Model
@@ -157,8 +157,16 @@ class Course extends Model
     /**
      *
      */
-    public function scopeFeatured($query)
+    public function scopeFeatured(Builder $query)
     {
         return $query->where("courses.featured", true);
+    }
+
+    /**
+     *
+     */
+    public function scopeByTerm(Builder $query, string $term)
+    {
+        return $query->where("courses.title", 'like', '%' . $term . '%');
     }
 }

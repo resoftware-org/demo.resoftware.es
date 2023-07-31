@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Facades\Voyager;
+use Illuminate\Database\Eloquent\Builder;
 
 class Reservation extends Model
 {
@@ -14,7 +14,7 @@ class Reservation extends Model
      */
     public static $BREAD_FIELDS = [
         0 => ['field' => 'id', 'type' => 'hidden', 'display_name' => 'Id', 'details' => null, 'order' => 1],
-        1 => ['field' => 'author_id', 'type' => 'text', 'display_name' => 'Author', 'details' => null, 'order' => 2],
+        1 => ['field' => 'user_id', 'type' => 'text', 'display_name' => 'Author', 'details' => null, 'order' => 2],
         2 => ['field' => 'course_id', 'type' => 'text', 'display_name' => 'Course', 'details' => null, 'order' => 3],
         3 => ['field' => 'schedule_id', 'type' => 'text', 'display_name' => 'Schedule', 'details' => null, 'order' => 4],
 
@@ -34,7 +34,7 @@ class Reservation extends Model
      */
     static public $BREAD_PERMISSIONS = [
         "id"            => ['required' => 1, 'browse' => 0, 'read' => 0, 'edit' => 0, 'add' => 0, 'delete' => 1],
-        "author_id"     => ['required' => 1, 'browse' => 0, 'read' => 1, 'edit' => 1, 'add' => 1, 'delete' => 0],
+        "user_id"       => ['required' => 1, 'browse' => 0, 'read' => 1, 'edit' => 1, 'add' => 1, 'delete' => 0],
         "course_id"     => ['required' => 1, 'browse' => 0, 'read' => 1, 'edit' => 1, 'add' => 1, 'delete' => 1],
         "schedule_id"   => ['required' => 1, 'browse' => 0, 'read' => 1, 'edit' => 1, 'add' => 1, 'delete' => 1],
         "created_at"    => ['required' => 0, 'browse' => 0, 'read' => 0, 'edit' => 0, 'add' => 0, 'delete' => 0],
@@ -48,7 +48,7 @@ class Reservation extends Model
      */
     static public $BREAD_RELATIONSHIPS = [
         ['field' => 'reservation_belongsto_owner', 'display_name' => 'Owner', 'type' => 'relationship', 'required' => true, 'browse' => true, 'read' => true, 'edit' => true, 'add' => true, 'delete' => false, 'details' => [
-            'model' => 'App\\Models\\User', 'table' => 'users', 'type'  => 'belongsTo', 'column' => 'author_id', 'key' => 'id',
+            'model' => 'App\\Models\\User', 'table' => 'users', 'type'  => 'belongsTo', 'column' => 'user_id', 'key' => 'id',
             'label' => 'email', 'pivot_table' => 'users', 'pivot' => false,
         ], 'order' => 5],
         ['field' => 'reservation_belongsto_course', 'display_name' => 'Course', 'type' => 'relationship', 'required' => true, 'browse' => true, 'read' => true, 'edit' => true, 'add' => true, 'delete' => false, 'details' => [
@@ -67,7 +67,7 @@ class Reservation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'author_id',
+        'user_id',
         'course_id',
         'schedule_id',
         'created_at',
@@ -89,7 +89,7 @@ class Reservation extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -106,5 +106,18 @@ class Reservation extends Model
     public function schedule()
     {
         return $this->hasOne(Schedule::class, 'schedule_id');
+    }
+
+    /**
+     *
+     */
+    public function scopeByUserAndMonth(Builder $query, User $user, string $month)
+    {
+        return $query
+            ->join("schedules", "schedules.id", "reservations.schedule_id")
+            ->whereRaw(
+                "extract(month from schedules.course_opens_at) = " . $month,
+            )
+            ->where('reservations.user_id', $user->id);
     }
 }

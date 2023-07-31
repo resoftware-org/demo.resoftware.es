@@ -2,20 +2,28 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+// re:App API routes
+Route::group([
+    'as' => 'reapp.api.',
+    'prefix' => 'api/v1',
+], function() {
 
+    // Wave API routes
+    // POST Auth API (Sanctum)
+    // Resources API (BREAD)
+    Route::group([
+        'as' => 'wave.',
+        'prefix' => 'wave',
+    ], function() {
+        Wave::api();
+    });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return auth()->user();
+    // GET USER
+    Route::get('/user', function (Request $request) {
+        return auth()->user();
+    })->name('users.me');
+
+    // SEARCH COURSES
+    Route::get('/courses', '\App\Http\Controllers\API\CoursesController@search')->name('courses.search');
+
 });
-
-Wave::api();

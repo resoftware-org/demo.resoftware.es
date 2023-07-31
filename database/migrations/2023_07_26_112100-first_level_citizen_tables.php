@@ -66,12 +66,12 @@ return new class extends Migration
         // Create table for storing session reservations
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id'); // int(10) unsigned
-            $table->bigInteger('author_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->integer('course_id')->unsigned(); // courses.id int(10) unsigned
             $table->integer('schedule_id')->unsigned(); // schedules.id int(10) unsigned
             $table->timestamps();
 
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('course_id')->references('id')->on('courses');
         });
     }
