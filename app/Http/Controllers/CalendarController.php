@@ -23,11 +23,12 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(string $month = null, string $year = null)
     {
         // prepare
         $user  = auth()->user();
-        $month = date("m");
+        $year  = $year === null ? date("Y") : $year;
+        $month = $month === null ? date("m") : $month;
 
         if ($user->subscribed("mentor") || $user->subscribed("college"))
             // teachers see own schedules
@@ -38,6 +39,8 @@ class CalendarController extends Controller
 
         // prepare
         return view('theme::calendar.index', compact(
+            "year",
+            "month",
             "schedules"
         ));
     }

@@ -5,6 +5,8 @@ return [
   'profile_fields' => [
     'about',
     'date_of_birth',
+    'gender',
+    'title',
   ],
 
   'api' => [

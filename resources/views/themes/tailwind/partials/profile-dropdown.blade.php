@@ -2,13 +2,17 @@
 <!-- Profile dropdown -->
 <div @click.away="open = false" class="relative w-1/2 flex justify-end" x-data="{ open: false }">
 
-    @if(auth()->user()->onTrial() )
-    <div class="relative items-center justify-center hidden h-full md:flex">
-        <span class="px-3 py-1 text-xs text-red-600 bg-red-100 border border-gray-200 rounded-md">You have {{ auth()->user()->daysLeftOnTrial() }} @if(auth()->user()->daysLeftOnTrial() > 1){{ 'Days' }}@else{{ 'Day' }}@endif left on your Trial</span>
-    </div>
+    @if (!isset($withTrial) || $withTrial === true)
+        @if (auth()->user()->onTrial())
+        <div class="relative items-center justify-center hidden h-full md:flex">
+            <span class="px-3 py-1 text-xs text-red-600 bg-red-100 border border-gray-200 rounded-md">You have {{ auth()->user()->daysLeftOnTrial() }} @if(auth()->user()->daysLeftOnTrial() > 1){{ 'Days' }}@else{{ 'Day' }}@endif left on your Trial</span>
+        </div>
+        @endif
     @endif
 
-    @include('theme::partials.notifications')
+    @if (!isset($withNotifications) || $withNotifications === true)
+        @include('theme::partials.notifications')
+    @endif
 
     <div class="pl-5">
         <button @click="open = !open" class="flex text-sm transition duration-150 ease-in-out border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open" aria-expanded="true">

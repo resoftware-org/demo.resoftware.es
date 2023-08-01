@@ -1,9 +1,22 @@
+const { iconsPlugin, getIconCollections } = require("@egoist/tailwindcss-icons");
+
 module.exports = {
     content: [
         './**/*.php',
         './*.php',
         './assets/**/*.scss',
         './assets/**/*.js',
+    ],
+    safelist: [
+        /* Sizes added in PHP */
+        'lg:mr-3',
+        'lg:ml-3',
+        /* Icons used in Menus */
+        'i-mdi-home-account',
+        'i-mdi-book-account',
+        'i-mdi-calendar-clock',
+        'i-mdi-certificate',
+        'i-mdi-chat-question-outline',
     ],
     theme: {
         extend: {
@@ -58,6 +71,9 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/forms'),
-        require('@tailwindcss/typography')
+        require('@tailwindcss/typography'),
+        iconsPlugin({
+            collections: getIconCollections(["mdi", "fa", "heroicons"])
+        })
     ]
 }

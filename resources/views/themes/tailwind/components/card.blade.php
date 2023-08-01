@@ -9,7 +9,7 @@
     $extra_css = isset($extra_css) ? $extra_css : ""
 @endphp
 
-<div class="flex flex-col justify-start flex-1 overflow-hidden bg-white border rounded-lg lg:{{$css_lg_m}} border-gray-150 {{$extra_css}}">
+<div class="flex flex-col flex-1 justify-start overflow-hidden mb-3 bg-white border rounded-lg lg:{{$css_lg_m}} border-gray-150 {{$extra_css}}">
     <div class="flex flex-wrap items-center justify-between p-5 bg-white border-b border-gray-150 sm:flex-no-wrap">
         <div class="flex items-center justify-center w-12 h-12 mr-5 rounded-lg bg-wave-100">
             {!! $icon !!}

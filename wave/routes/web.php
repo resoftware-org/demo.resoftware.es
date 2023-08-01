@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 Route::impersonate();
 
 Route::get('/', '\Wave\Http\Controllers\HomeController@index')->name('wave.home');
-Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 
 // Documentation routes
 Route::view('docs/{page?}', 'docs::index')->where('page', '(.*)');
@@ -38,6 +37,7 @@ Route::group(['middleware' => 'wave'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
+	Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 	Route::get('settings/{section?}', '\Wave\Http\Controllers\SettingsController@index')->name('wave.settings');
 
 	Route::post('settings/profile', '\Wave\Http\Controllers\SettingsController@profilePut')->name('wave.settings.profile.put');

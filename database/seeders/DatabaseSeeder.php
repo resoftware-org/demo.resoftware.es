@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WaveKeyValuesTableSeeder::class);
         fixPostgresSequence();
 
-        // custom re:Play seeders
+        // custom re:App seeders
         $this->call(ReplayTableSeeder::class);
     }
 }

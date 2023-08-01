@@ -81,13 +81,19 @@ class MenuItemsTableSeeder extends Seeder
             ]],
         ];
 
-        /* 1. Library */
-        /* 2. Courses */
+        /* 1. Dashboard */
+        /* 2. My Library */
+        /* 3. Calendar */
+        /* 3. Support */
         $spec_reapp = [
-            'Dashboard' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'home', 'route' => 'wave.dashboard', 'order' => 1],
-            'My Library' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-logbook', 'route' => 'reapp.library', 'order' => 2],
-            'Calendar' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-calendar', 'route' => 'reapp.calendar', 'order' => 3],
-            'Support' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'voyager-chat', 'route' => 'reapp.support', 'order' => 4],
+            // CAUTION: when modifying the 'icon_class' field for THIS MENU, please
+            // also modify the `resources/views/themes/tailwind/tailwind.config.js`
+            // file and *safelist* all the icons that are listed below.
+            'dashboard' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-home-account', 'route' => 'wave.dashboard', 'order' => 1],
+            'library' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-book-account', 'route' => 'reapp.library', 'order' => 2],
+            'calendar' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-calendar-clock', 'route' => 'reapp.calendar', 'order' => 3],
+            'certificates' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-certificate', 'route' => 'reapp.certificates', 'order' => 4],
+            'support' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-chat-question-outline', 'route' => 'reapp.support', 'order' => 5],
         ];
 
         /* 1. Home */

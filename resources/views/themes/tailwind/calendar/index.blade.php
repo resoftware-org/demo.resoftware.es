@@ -4,6 +4,7 @@
 
 @section('content')
 
+<!-- reApp Calendar -->
 <div
     class="w-full flex flex-col px-8 mx-auto my-6 lg:flex-row max-w-7xl xl:px-5"
     x-data="reapp_calendar()"
@@ -12,7 +13,9 @@
 >
     <!-- source: https://tailwindcomponents.com/component/calendar-ui-with-tailwindcss-and-alpinejs -->
     <div class="antialiased sans-serif bg-gray-100 w-full lg:w-4/6">
-        <h2>Calendar</h2>
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold leading-none text-gray-900">{{__('replay.calendar.title')}}</h2>
+        </div>
         <div>
             <!-- Calendar UI -->
             <div class="container py-2">
@@ -25,6 +28,7 @@
                             <span x-text="year" class="ml-1 text-lg text-gray-600 font-normal"></span>
                         </div>
                         <div class="border rounded-lg px-1" style="padding-top: 2px;">
+                            <!-- Left Arrow -->
                             <button 
                                 type="button"
                                 class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center" 
@@ -36,6 +40,7 @@
                                 </svg>
                             </button>
                             <div class="border-r inline-flex h-6"></div>		
+                            <!-- Right Arrow -->
                             <button 
                                 type="button"
                                 class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1" 
@@ -56,7 +61,7 @@
                         <!-- Days Header -->
                         <div class="flex flex-wrap" style="margin-bottom: -40px;">
                             <template x-for="(day, index) in DAYS" :key="index">	
-                                <div style="width: 14.26%" class="px-2 py-2 w-[14.26%]">
+                                <div style="width: 14.26%" class="px-2 py-2">
                                     <div
                                         x-text="day" 
                                         class="text-gray-600 text-sm uppercase tracking-wide font-bold text-center"></div>
@@ -69,18 +74,18 @@
                             <template x-for="blankday in days_blank">
                                 <div 
                                     style="width: 14.28%;"
-                                    class="text-center border-r border-b px-4 pt-2 h-[40px] lg:h-[80px] 2xl:h-[120px]"
+                                    class="text-center border-r border-b px-4 pt-2 h-[40px] lg:h-[100px] 2xl:h-[120px]"
                                 ></div>
                             </template>
                             <template x-for="(date, dateIndex) in days_of_month" :key="dateIndex">	
-                                <div style="width: 14.28%;" class="px-2 pt-2 border-r border-b relative h-[40px] lg:px-4 lg:h-[80px] 2xl:h-[120px]">
+                                <div style="width: 14.28%;" class="px-2 pt-2 border-r border-b relative h-[40px] lg:px-4 lg:h-[100px] 2xl:h-[120px]">
                                     <div
                                         @click="showEventModal(date)"
                                         x-text="date"
                                         class="inline-flex w-6 h-6 items-center justify-center cursor-pointer text-center leading-none rounded-full transition ease-in-out duration-100"
                                         :class="{'bg-blue-500 text-white': isToday(date) == true, 'text-gray-700 hover:bg-blue-200': isToday(date) == false }"	
                                     ></div>
-                                    <div class="overflow-y-auto mt-1 h-[40px] lg:h-[80px] 2xl:h-[120px]">
+                                    <div class="overflow-y-auto mt-1 h-[40px] lg:h-[100px] 2xl:h-[120px]">
                                         <template x-for="event in events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() )">	
                                             <div
                                                 class="px-2 py-1 rounded-lg mt-1 overflow-hidden border"
@@ -104,67 +109,138 @@
                 </div>
             </div> <!-- End Calendar UI -->
 
-            <div style=" background-color: rgba(0, 0, 0, 0.8)" class="fixed z-40 top-0 right-0 left-0 bottom-0 h-full w-full" x-show.transition.opacity="form.isOpen">
-                <div class="p-4 max-w-xl mx-auto relative absolute left-0 right-0 overflow-hidden mt-24">
-                    <div class="shadow absolute right-0 top-0 w-10 h-10 rounded-full bg-white text-gray-500 hover:text-gray-800 inline-flex items-center justify-center cursor-pointer"
-                        x-on:click="form.isOpen = !form.isOpen">
-                        <svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
-                        </svg>
-                    </div>
+            @include("theme::modals.add-event", [
+                "xShow" => "form.isOpen", // see reapp_calendar()
+            ])
 
-                    <div class="shadow w-full rounded-lg bg-white overflow-hidden w-full block p-8">
-
-                        <h2 class="font-bold text-2xl mb-6 text-gray-800 border-b pb-2">Add Event Details</h2>
-
-                        <div class="mb-4">
-                            <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Event title</label>
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" x-model="form.title">
-                        </div>
-
-                        <div class="mb-4">
-                            <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Event date</label>
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" x-model="form.date" readonly>
-                        </div>
-
-                        <div class="inline-block w-64 mb-4">
-                            <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Select a theme</label>
-                            <div class="relative">
-                                <select @change="form.theme = $event.target.value;" x-model="form.theme" class="block appearance-none w-full bg-gray-200 border-2 border-gray-200 hover:border-gray-500 px-4 py-2 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-gray-700">
-                                        <template x-for="(theme, index) in themes">
-                                            <option :value="theme.value" x-text="theme.label"></option>
-                                        </template>
-                                    
-                                </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="mt-8 text-right">
-                            <button type="button" class="bg-white hover:bg-gray-100 text-gray-700 font-semibold py-2 px-4 border border-gray-300 rounded-lg shadow-sm mr-2" @click="form.isOpen = !form.isOpen">
-                                Cancel
-                            </button>
-                            <button type="button" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 border border-gray-700 rounded-lg shadow-sm" @click="addEvent()">
-                                Save Event
-                            </button>	
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="px-6 text-gray-500 w-full lg:w-2/6">
-        <h2>Today</h2>
-        <p class="py-6">No events configured for today!</p>
-    </div>
+
+    <!-- Sidebar Right -->
+    <div class="relative px-6 text-gray-500 w-full lg:w-2/6 max-h-[580px] overflow-y-hidden">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold leading-none text-gray-900">{{__('replay.calendar.sidebar.title')}}</h2>
+            <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+            {{__('replay.calendar.sidebar.view_all')}}
+            </a>
+        </div>
+
+        <div class="flow-root">
+
+        @if($schedules->isEmpty())
+            <p class="py-6">{{__('replay.calendar.empty_message')}}</p>
+        @endempty
+
+        @if (isset($schedules))
+            <ul role="list" class="h-full">
+
+            @foreach ($schedules->slice(0, 6) as $schedule)
+                <li class="py-3 sm:py-4 border-b border-b-gray-700" x-show="current_page === 1">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <img
+                                class="w-8 h-8 rounded-md"
+                                src="/storage/{{$schedule->course->image}}"
+                                alt="Featured image of {{$schedule->course->title}}">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-gray-900 truncate">
+                                {{$schedule->course->title}}
+                            </p>
+                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                with {{$schedule->user->name}}
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center justify-center text-base text-gray-900">
+                            <div class="items-center"><span class="i-mdi-calendar"></span>&nbsp;{{$schedule->course_opens_at->format("d.m")}}</div>
+                            <div class="items-center"><span class="i-mdi-clock-outline"></span>&nbsp;{{$schedule->course_opens_at->format("H:i")}}</div>
+                        </div>
+                    </div>
+                </li>
+            @endforeach
+
+            @if ($schedules->count() > 6)
+            @php $page = 2; $i = 0; @endphp
+            @foreach ($schedules->slice(6) as $schedule)
+                @if ($i === 6) @php $page++; @endphp @endif
+                <li class="py-3 sm:py-4 border-b border-b-gray-700" x-show="current_page === {{$page}}">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <img
+                                class="w-8 h-8 rounded-md"
+                                src="/storage/{{$schedule->course->image}}"
+                                alt="Featured image of {{$schedule->course->title}}">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-gray-900 truncate">
+                                {{$schedule->course->title}}
+                            </p>
+                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                with {{$schedule->user->name}}
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center justify-center text-base text-gray-900">
+                            <div class="items-center"><span class="i-mdi-calendar"></span>&nbsp;{{$schedule->course_opens_at->format("d.m")}}</div>
+                            <div class="items-center"><span class="i-mdi-clock-outline"></span>&nbsp;{{$schedule->course_opens_at->format("H:i")}}</div>
+                        </div>
+                    </div>
+                </li>
+            @php $i++; @endphp
+            @endforeach
+            @endif
+
+            </ul>
+
+            @if ($schedules->count() > 6)
+            <div class="flex flex-wrap justify-center mt-6 lg:mt-8">
+                <span class="text-base font-medium">{{__('replay.calendar.sidebar.page')}}:</span>
+                @for ($i = 0; $i < ($schedules->count() / 6); $i++)
+                    @php $page = $i+1; @endphp
+                <span
+                    @click="current_page = {{$page}}"
+                    class="text-base mx-2 hover:cursor-pointer"
+                    :class="{
+                        'underline': current_page !== {{$page}},
+                        'text-blue-600': current_page !== {{$page}},
+                    }"
+                >{{$page}}</span>
+                @endfor
+            </div>
+            @endif
+        @endif
+
+        </div>
+    </div> <!-- End Sidebar Right -->
 </div>
+<!-- End reApp Calendar -->
 
 <script>
-    const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    // list of localized full month names
+    const MONTH_NAMES = [
+        '{{__("replay.calendar.months.full.01")}}', // January
+        '{{__("replay.calendar.months.full.02")}}',
+        '{{__("replay.calendar.months.full.03")}}',
+        '{{__("replay.calendar.months.full.04")}}',
+        '{{__("replay.calendar.months.full.05")}}',
+        '{{__("replay.calendar.months.full.06")}}',
+        '{{__("replay.calendar.months.full.07")}}',
+        '{{__("replay.calendar.months.full.08")}}',
+        '{{__("replay.calendar.months.full.09")}}',
+        '{{__("replay.calendar.months.full.10")}}',
+        '{{__("replay.calendar.months.full.11")}}',
+        '{{__("replay.calendar.months.full.12")}}',
+    ];
+
+    // list of localized short days names
+    const DAYS = [
+        '{{__("replay.calendar.days.short.01")}}', // Monday
+        '{{__("replay.calendar.days.short.02")}}',
+        '{{__("replay.calendar.days.short.03")}}',
+        '{{__("replay.calendar.days.short.04")}}',
+        '{{__("replay.calendar.days.short.05")}}',
+        '{{__("replay.calendar.days.short.06")}}',
+        '{{__("replay.calendar.days.short.07")}}',
+    ];
 
     function reapp_calendar() {
         return {
@@ -172,6 +248,7 @@
             year: '',
             days_of_month: [],
             days_blank: [],
+            current_page: 1,
 
             form: {
                 isOpen: false,
@@ -205,9 +282,10 @@
 
             initializeDate() {
                 let today = new Date();
-                this.month = today.getMonth();
-                this.year = today.getFullYear();
-                this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
+                this.month = '{{$month-1}}'; // JS months are indexed
+                this.year = '{{$year}}';
+
+                this.datepickerValue = new Date(this.year, this.month, 1).toDateString();
 
                 // also initialize days boxes
                 this.initializeBoxes();
@@ -219,6 +297,10 @@
 
                 // find out day of week for 1st of month
                 let dayOfWeek = new Date(this.year, this.month).getDay();
+
+                // we use Monday as 1st day of week (JS uses Sunday)
+                if (dayOfWeek === 0) dayOfWeek = 6;
+                else dayOfWeek--;
 
                 // empty boxes before 1st of month
                 this.days_blank = [];

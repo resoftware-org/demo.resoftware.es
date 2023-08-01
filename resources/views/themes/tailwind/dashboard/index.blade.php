@@ -6,7 +6,7 @@
 
 <div class="relative flex flex-col mx-auto max-w-7xl xl:px-5">
     <?php /* Row #1 - 2 Cards */ ?>
-    <div class="relative flex flex-col px-8 mx-auto my-3 lg:flex-row">
+    <div class="relative flex flex-col px-8 mx-auto my-0 lg:my-3 lg:flex-row">
 
         <?php /* Box #1 - Welcome to re:Play */ ?>
         @include("theme::components.card", [
@@ -40,7 +40,7 @@
     </div>
 
     <?php /* Row #2 - 2 Cards */ ?>
-    <div class="relative flex flex-col px-8 mx-auto my-3 lg:flex-row">
+    <div class="relative flex flex-col px-8 mx-auto my-0 lg:my-3 lg:flex-row">
 
         <?php /* Box #3 - Data Vault */ ?>
         @include("theme::components.card", [
