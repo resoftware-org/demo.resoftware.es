@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Wave\KeyValue;
+use Wave\PaddleSubscription;
 use Carbon\Carbon;
 
 use App\Models\User;
@@ -132,8 +133,14 @@ class UsersTableSeeder extends Seeder
         ];
 
         $pw_type = "Starter";
-        if ($role_id === User::$ROLES["mentor"]) $pw_type = "Mentor";
-        elseif ($role_id === User::$ROLES["college"]) $pw_type = "College";
+        $plan_id = User::$PLANS["starter"];
+        if ($role_id === User::$ROLES["mentor"]) :
+            $pw_type = "Mentor";
+            $plan_id = User::$PLANS["mentor"];
+        elseif ($role_id === User::$ROLES["college"]):
+            $pw_type = "College";
+            $plan_id = User::$PLANS["college"];
+        endif;
 
         $user = User::updateOrCreate(
             ["email" => $email],
@@ -175,5 +182,11 @@ class UsersTableSeeder extends Seeder
                 'value' => $title,
             ]);
         }
+
+        PaddleSubscription::create([
+            'subscription_id' => $user->id, // FAKE!
+            'plan_id' => $plan_id,
+            'user_id' => $user->id,
+        ]);
     }
 }

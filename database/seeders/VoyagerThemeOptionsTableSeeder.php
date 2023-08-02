@@ -31,7 +31,7 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 18,
                 'theme_id' => 1,
                 'key' => 'home_headline',
-                'value' => __('replay.guest.welcome_title'),
+                'value' => 'replay.guest.welcome_title',
                 'created_at' => '2017-11-25 17:31:45',
                 'updated_at' => '2018-08-28 00:17:41'
             ),
@@ -40,7 +40,7 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 19,
                 'theme_id' => 1,
                 'key' => 'home_subheadline',
-                'value' => __('replay.guest.slogan_text'),
+                'value' => 'replay.guest.slogan_text',
                 'created_at' => '2017-11-25 17:31:45',
                 'updated_at' => '2017-11-26 07:11:47'
             ),
@@ -49,7 +49,7 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 20,
                 'theme_id' => 1,
                 'key' => 'home_description',
-                'value' => __('replay.guest.welcome_paragraph'),
+                'value' => 'replay.guest.welcome_paragraph',
                 'created_at' => '2017-11-25 17:31:45',
                 'updated_at' => '2017-11-26 07:09:50'
             ),
@@ -58,7 +58,7 @@ class VoyagerThemeOptionsTableSeeder extends Seeder
                 'id' => 21,
                 'theme_id' => 1,
                 'key' => 'home_cta',
-                'value' => 'Signup',
+                'value' => 'replay.guest.signup',
                 'created_at' => '2017-11-25 20:02:29',
                 'updated_at' => '2020-10-23 20:17:25'
             ),

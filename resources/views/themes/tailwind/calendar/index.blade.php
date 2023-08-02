@@ -6,15 +6,19 @@
 
 <!-- reApp Calendar -->
 <div
-    class="w-full flex flex-col px-8 mx-auto my-6 lg:flex-row max-w-7xl xl:px-5"
+    class="w-full flex flex-col px-4 mx-auto my-3 lg:flex-row max-w-7xl sm:px-8 sm:my-6 xl:px-5"
     x-data="reapp_calendar()"
     x-init="[initializeDate()]"
     x-cloak
 >
     <!-- source: https://tailwindcomponents.com/component/calendar-ui-with-tailwindcss-and-alpinejs -->
     <div class="antialiased sans-serif bg-gray-100 w-full lg:w-4/6">
-        <div class="flex items-center justify-between mb-4">
+        <div class="flex flex-col items-center justify-center mb-4 sm:justify-between sm:flex-row">
             <h2 class="text-xl font-bold leading-none text-gray-900">{{__('replay.calendar.title')}}</h2>
+
+            @include("theme::components.info-box", [
+                "message" => __('replay.calendar.intro'),
+            ])
         </div>
         <div>
             <!-- Calendar UI -->
@@ -59,7 +63,7 @@
                     <div class="-mx-1 -mb-1">
 
                         <!-- Days Header -->
-                        <div class="flex flex-wrap" style="margin-bottom: -40px;">
+                        <div class="flex flex-wrap mb-[-20px] sm:mb-[-40px]">
                             <template x-for="(day, index) in DAYS" :key="index">	
                                 <div style="width: 14.26%" class="px-2 py-2">
                                     <div
@@ -88,7 +92,7 @@
                                     <div class="overflow-y-auto mt-1 h-[40px] lg:h-[100px] 2xl:h-[120px]">
                                         <template x-for="event in events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() )">	
                                             <div
-                                                class="px-2 py-1 rounded-lg mt-1 overflow-hidden border"
+                                                class="px-2 py-1 mt-7 overflow-hidden border rounded-full sm:rounded-lg sm:mt-1"
                                                 :class="{
                                                     'border-blue-200 text-blue-800 bg-blue-100': event.event_theme === 'blue',
                                                     'border-red-200 text-red-800 bg-red-100': event.event_theme === 'red',
@@ -97,7 +101,7 @@
                                                     'border-purple-200 text-purple-800 bg-purple-100': event.event_theme === 'purple'
                                                 }"
                                             >
-                                                <p x-text="event.event_title" class="text-sm truncate leading-tight"></p>
+                                                <p x-text="event.event_title" class="hidden text-sm truncate leading-tight sm:block"></p>
                                             </div>
                                         </template>
                                     </div>
@@ -117,7 +121,7 @@
     </div>
 
     <!-- Sidebar Right -->
-    <div class="relative px-6 text-gray-500 w-full lg:w-2/6 max-h-[580px] overflow-y-hidden">
+    <div class="relative px-6 mt-10 text-gray-500 w-full lg:mt-0 lg:w-2/6 max-h-[580px] overflow-y-hidden">
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-xl font-bold leading-none text-gray-900">{{__('replay.calendar.sidebar.title')}}</h2>
             <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
@@ -135,7 +139,11 @@
             <ul role="list" class="h-full">
 
             @foreach ($schedules->slice(0, 6) as $schedule)
-                <li class="py-3 sm:py-4 border-b border-b-gray-700" x-show="current_page === 1">
+                <li
+                    x-show="current_page === 1"
+                    x-on:click="toggleModalBox('course-details-modal-{{$schedule->course->id}}')"
+                    class="py-3 sm:py-4 border-b border-b-gray-700 hover:cursor-pointer"
+                >
                     <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
                             <img
@@ -156,6 +164,11 @@
                             <div class="items-center"><span class="i-mdi-clock-outline"></span>&nbsp;{{$schedule->course_opens_at->format("H:i")}}</div>
                         </div>
                     </div>
+
+                    @include("theme::modals.read-event", [
+                        "xShow" => "'course-details-modal-" . $schedule->course->id . "' in modalStateById && modalStateById['course-details-modal-" . $schedule->course->id . "']",
+                        "course" => $schedule->course,
+                    ])
                 </li>
             @endforeach
 
@@ -163,7 +176,11 @@
             @php $page = 2; $i = 0; @endphp
             @foreach ($schedules->slice(6) as $schedule)
                 @if ($i === 6) @php $page++; @endphp @endif
-                <li class="py-3 sm:py-4 border-b border-b-gray-700" x-show="current_page === {{$page}}">
+                <li 
+                    x-show="current_page === {{$page}}"
+                    x-on:click="toggleModalBox('course-details-modal-{{$schedule->course->id}}')"
+                    class="py-3 sm:py-4 border-b border-b-gray-700 hover:cursor-pointer"
+                >
                     <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
                             <img
@@ -184,6 +201,11 @@
                             <div class="items-center"><span class="i-mdi-clock-outline"></span>&nbsp;{{$schedule->course_opens_at->format("H:i")}}</div>
                         </div>
                     </div>
+
+                    @include("theme::modals.read-event", [
+                        "xShow" => "'course-details-modal-" . $schedule->course->id . "' in modalStateById && modalStateById['course-details-modal-" . $schedule->course->id . "']",
+                        "course" => $schedule->course,
+                    ])
                 </li>
             @php $i++; @endphp
             @endforeach
@@ -249,6 +271,7 @@
             days_of_month: [],
             days_blank: [],
             current_page: 1,
+            modalStateById: {},
 
             form: {
                 isOpen: false,
@@ -348,9 +371,18 @@
 
                 // close the modal
                 this.form.isOpen = false;
+            },
+
+            toggleModalBox(id) {
+                // toggle the modal box or init
+                this.modalStateById[id] = id in this.modalStateById
+                    ? !this.modalStateById[id]
+                    : true;
             }
         }
     }
 </script>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
 
 @endsection
