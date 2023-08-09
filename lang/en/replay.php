@@ -97,6 +97,9 @@ return [
 
         'go_to_calendar' => 'Lesson planning',
         'at_time_prefix' => 'at',
+
+        'demo_text_p1' => 'This is a demo of :app by re:Software S.L.',
+        'demo_text_p2' => 'Want to host your own self-hosted Software as a Service Starter Kit?',
     ],
     'dashboard' => [
         'intro_card_1' => 'This card contains key metrics about your account on this platform. Make sure to come back here every now and then!',
@@ -136,7 +139,6 @@ return [
                 '11' => 'November',
                 '12' => 'December',
             ],
-            
         ],
 
         'days' => [

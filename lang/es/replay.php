@@ -60,6 +60,31 @@ return [
             'description' => 'Nuestros clientes y usuarios compartieron estas opiniones sobre nosotros:',
             'view_case_studies' => 'Ver casos prácticos',
         ],
+
+        'pricing' => [
+            'title' => 'Únete a la evolución del e-Learning!',
+            'intro' => 'No te pierdas la ultima app digitalización de e-Learning!',
+
+            'plans_interval' => 'al mes',
+
+            'plans_starter_desc'  => 'Suscríbete a un Plan Starter para empezar a ver cursor ahora mismo.',
+            'plans_starter_feat1' => 'Ver cursos online',
+            'plans_starter_feat2' => 'Acceso a la biblioteca',
+
+            'plans_mentor_desc'  => 'Suscríbete a un Plan Mentor para empezar a crear tus proprios contenidos educativos.',
+            'plans_mentor_feat1' => 'Publicar cursos online',
+            'plans_mentor_feat2' => 'Acceso a la biblioteca',
+            'plans_mentor_feat3' => 'Crear material didáctico',
+
+            'plans_college_desc'  => 'Suscríbete a un Plan College para empezar a gestionar tu escuela o universidad.',
+            'plans_college_feat1' => 'Publicar cursos online',
+            'plans_college_feat2' => 'Gestionar a la biblioteca',
+            'plans_college_feat3' => 'Gestionar a la universidad',
+
+            'subscribed_to_this_plan' => 'Estás suscrito a este plan',
+            'switch_plans' => 'Cambiar mi plan',
+            'get_started' => 'Empezar ya',
+        ],
     ],
     'app' => [
         'menu' => [
@@ -68,11 +93,21 @@ return [
             'calendar' => 'Agenda de clases',
             'certificates' => 'Certificación',
             'support' => 'Preguntas y Ayuda',
-        ]
+        ],
+
+        'go_to_calendar' => 'Agenda de clases',
+        'at_time_prefix' => 'a las',
+
+        'demo_text_p1' => 'Estás viendo una demo de :app de re:Software S.L.',
+        'demo_text_p2' => '¿Quiere empezar con su propio Software as a Service Starter Kit?',
+    ],
+    'dashboard' => [
+        'intro_card_1' => 'Este panel contiene métricas clave sobre tu cuenta en esta plataforma. ¡Asegúrate de volver aquí de vez en cuando!',
     ],
     'calendar' => [
         'title' => 'Agenda de clases',
         'empty_message' => 'Todavía no has programado ningún curso.',
+        'intro' => 'Para programar nuevos eventos, puedes hacer clic en los numeros que ponen los dias del calendario. Los eventos aparecen en el calendario para cualquier actividad programada.',
 
         'months' => [
             'short' => [
@@ -104,7 +139,6 @@ return [
                 '11' => 'Noviembre',
                 '12' => 'Diciembre',
             ],
-            
         ],
 
         'days' => [
@@ -133,6 +167,45 @@ return [
             'title' => 'Clases programadas',
             'view_all' => 'Listado',
             'page' => 'Página',
+        ],
+    ],
+    'profile' => [
+        'title' => 'Currículo de :name',
+        'subtitle_about' => 'Biografía breve',
+        'subtitle_courses' => 'Cursos online',
+        'subtitle_courses_taken' => 'Itinerario de aprendizaje',
+        'subtitle_details' => 'Más sobre mí',
+        'subtitle_social' => 'Sígueme',
+        'date_of_birth' => 'Fecha de nacimiento',
+        'form' => [
+            'label_name' => 'Tu nombre',
+            'label_email_address' => 'Tu dirección de correo electrónico',
+            'label_about' => 'Escribe una biografía breve',
+            'label_date_of_birth' => 'Fecha de nacimiento',
+            'label_gender' => 'Sexo',
+            'label_title' => 'Denominación',
+            'label_website' => 'URL de tu pagina web',
+            'label_facebook' => 'Tu perfil en Facebook',
+            'label_twitter' => 'Tu perfil en Twitter',
+            'label_instagram' => 'Tu perfil en Instagram',
+            'label_twitch' => 'Tu canal en Twitch',
+            'label_youtube' => 'Tu canal en Youtube',
+            'gender_m' => 'Hombre',
+            'gender_f' => 'Mujer',
+            'gender_0' => 'No deseo especificar',
+            'title_none' => 'No indicado',
+            'title_mr' => 'Sr.',
+            'title_ms' => 'Sra.',
+            'title_mrs' => 'Srta.',
+            'title_sir' => 'Sir',
+            'title_dr' => 'Dr.',
+            'title_prof' => 'Prof.',
+            'placeholder_website_url' => 'www.milestudios.es',
+            'placeholder_facebook_url' => 'facebook.com/resoftwaresl',
+            'placeholder_instagram_url' => 'instagram.com/resoftwaresl',
+            'placeholder_twitch_url' => 'twitch.tv/resoftwaresl',
+            'placeholder_twitter_url' => 'twitter.com/resoftwaresl',
+            'placeholder_youtube_url' => 'youtube.com/resoftwaresl',
         ],
     ],
 ];

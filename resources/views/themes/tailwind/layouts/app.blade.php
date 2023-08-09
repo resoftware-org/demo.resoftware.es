@@ -77,6 +77,10 @@
     <!-- Content slots -->
     <div class="w-full flex flex-col h-screen overflow-y-hidden">
 
+        @if (config("wave.demo", false))
+            @include("theme::partials.demo-header")
+        @endif
+
         <!-- Desktop Header -->
         <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
             <div class="w-1/2 text-right">@yield('title')</div>
