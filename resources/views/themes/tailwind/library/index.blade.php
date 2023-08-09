@@ -44,7 +44,7 @@
                     </button>
                 </div>
                 <div class="flex w-full mt-2 lg:mt-0 items-center justify-center mx-auto lg:w-2/3">
-                    <div><span class="text-xl font-bold">{{ $course->title }}</span>, by {{ $course->user->name }}</div>
+                    <div><span class="text-xl font-bold">{{ $course->title }}</span>, by {{ $course->user->titled_name }}</div>
                     <div class="flex text-sm transition duration-150 ease-in-out border-2 border-transparent focus:outline-none focus:border-gray-300 ml-3">
                         <img class="w-12 h-12 rounded-full" src="{{ auth()->user()->avatar() . '?' . time() }}" alt="{{ auth()->user()->name }}'s Avatar">
                     </div>
@@ -55,6 +55,7 @@
 
                 @include("theme::modals.read-event", [
                     "xShow" => "'course-details-modal-" . $course->id . "' in modalStateById && modalStateById['course-details-modal-" . $course->id . "']",
+                    "xVar"  => "modalStateById['course-details-modal-" . $course->id . "']",
                     "course" => $course,
                 ])
 

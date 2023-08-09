@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->loadHelpers();
     }
 
     /**
@@ -58,6 +58,13 @@ class AppServiceProvider extends ServiceProvider
 
             return true;
         });
+    }
+
+    protected function loadHelpers()
+    {
+        foreach (glob(realpath(__DIR__ . "/..") . '/Helpers/*.php') as $filename) {
+            require_once $filename;
+        }
     }
 
     private function setSchemaDefaultLength(): void

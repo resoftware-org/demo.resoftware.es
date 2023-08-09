@@ -6,41 +6,38 @@
 
 <div class="relative flex flex-col mx-auto max-w-7xl xl:px-5">
     <?php /* Row #1 - 2 Cards */ ?>
-    <div class="relative flex flex-col px-8 mx-auto my-0 lg:my-3 lg:flex-row">
-
-        <?php /* Box #1 - Welcome to re:Play */ ?>
+    <div class="relative flex flex-col px-0 mx-auto my-0 sm:px-8 lg:my-3 lg:flex-row">
+        <?php /* Box #1 - Welcome to your dash! */ ?>
         @include("theme::components.card", [
             "type" => "text",
             "position" => "left",
-            "title" => "Welcome to re:Play",
-            "subtitle" => "Smart online courses",
+            "title" => "Welcome to your dash!",
+            "subtitle" => "Key statistics",
             "content" => [
-                "Manage all your courses from one place and securely, then connect any of your devices to stream, share or just watch your content.",
-                "Finally an easy way to share your online courses with colleagues."
+                __('replay.dashboard.intro_card_1') . "<br /><br />",
+                "You are the author of <span class='font-semibold'>" . $courses->count() . " online courses.</span>",
+                "You have <span class='font-semibold'>" . $schedules->count() . " classes</span> to teach this month.",
+                "You have <span class='font-semibold'>" . $reservations->count() . " classes</span> to attend this month.",
             ],
             "icon" => '<svg class="w-6 h-6 text-wave-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>',
-            "link" => url('docs'),
-            "cta_text" => "Read the docs"
+            "link" => route('reapp.calendar'),
+            "cta_text" => __('replay.app.go_to_calendar')
         ])
 
         <?php /* Box #2 - Sharing is caring */ ?>
         @include("theme::components.card", [
-            "type" => "text",
+            "type" => "chart",
             "position" => "right",
-            "title" => "Your online courses, anywhere!",
-            "subtitle" => "Don't compromise security for comfort!",
-            "content" => [
-                "Finally an easy way to share your online courses with colleagues, without compromising your privacy or the security of your files.",
-                "Share your online courses to your devices or using temporary links."
-            ],
+            "title" => "Your audience in numbers",
+            "subtitle" => "Make sure you keep growing!",
             "icon" => '<svg class="w-6 h-6 text-wave-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path></svg>',
-            "link" => url('support'),
-            "cta_text" => "Watch The Videos"
+            "chart" => "income",
+            "datasets" => $courses,
         ])
     </div>
 
     <?php /* Row #2 - 2 Cards */ ?>
-    <div class="relative flex flex-col px-8 mx-auto my-0 lg:my-3 lg:flex-row">
+    <div class="relative flex flex-col px-0 mx-auto my-0 sm:px-8 lg:my-3 lg:flex-row">
 
         <?php /* Box #3 - Data Vault */ ?>
         @include("theme::components.card", [

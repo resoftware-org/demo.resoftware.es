@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Wave\Category;
 
+use App\Models\User;
+use App\Models\Course;
+use App\Models\Download;
+use App\Models\Schedule;
+use App\Models\Reservation;
+
 class Course extends Model
 {
     /**
@@ -133,6 +139,11 @@ class Course extends Model
     /**
      *
      */
+    protected $with = ["user", "category"];
+
+    /**
+     *
+     */
     public function user()
     {
         return $this->belongsTo(User::class, 'author_id');
@@ -157,6 +168,22 @@ class Course extends Model
     /**
      *
      */
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'course_id', 'id');
+    }
+
+    /**
+     *
+     */
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'course_id', 'id');
+    }
+
+    /**
+     *
+     */
     public function scopeFeatured(Builder $query)
     {
         return $query->where("courses.featured", true);
@@ -168,5 +195,13 @@ class Course extends Model
     public function scopeByTerm(Builder $query, string $term)
     {
         return $query->where("courses.title", 'like', '%' . $term . '%');
+    }
+
+    /**
+     *
+     */
+    public function scopeByAuthor(Builder $query, User $user)
+    {
+        return $query->where("courses.author_id", $user->id);
     }
 }

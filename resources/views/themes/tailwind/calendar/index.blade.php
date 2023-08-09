@@ -89,21 +89,19 @@
                                         class="inline-flex w-6 h-6 items-center justify-center cursor-pointer text-center leading-none rounded-full transition ease-in-out duration-100"
                                         :class="{'bg-blue-500 text-white': isToday(date) == true, 'text-gray-700 hover:bg-blue-200': isToday(date) == false }"	
                                     ></div>
-                                    <div class="overflow-y-auto mt-1 h-[40px] lg:h-[100px] 2xl:h-[120px]">
-                                        <template x-for="event in events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() )">	
-                                            <div
-                                                class="px-2 py-1 mt-7 overflow-hidden border rounded-full sm:rounded-lg sm:mt-1"
-                                                :class="{
-                                                    'border-blue-200 text-blue-800 bg-blue-100': event.event_theme === 'blue',
-                                                    'border-red-200 text-red-800 bg-red-100': event.event_theme === 'red',
-                                                    'border-yellow-200 text-yellow-800 bg-yellow-100': event.event_theme === 'yellow',
-                                                    'border-green-200 text-green-800 bg-green-100': event.event_theme === 'green',
-                                                    'border-purple-200 text-purple-800 bg-purple-100': event.event_theme === 'purple'
-                                                }"
-                                            >
-                                                <p x-text="event.event_title" class="hidden text-sm truncate leading-tight sm:block"></p>
-                                            </div>
-                                        </template>
+                                    <div class="flex flex-row overflow-y-auto mt-1 w-full h-[30px]">
+                                        <div
+                                            x-show="0 < events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() && e.event_theme === 'blue' ).length"
+                                            class="px-2 py-1 ml-1 mt-7 overflow-hidden border rounded-full w-[40px] max-w-[40px] border-blue-200 text-blue-800 bg-blue-100 sm:rounded-lg sm:mt-1"
+                                        >
+                                            <p x-text="events.filter(e => new Date(e.event_date).toDateString() === new Date(year, month, date).toDateString() && e.event_theme === 'blue').length" class="hidden text-sm truncate leading-tight sm:block w-[40px]"></p>
+                                        </div>
+                                        <div
+                                            x-show="0 < events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() && e.event_theme === 'red' ).length"
+                                            class="px-2 py-1 ml-1 mt-7 overflow-hidden border rounded-full w-[40px] max-w-[40px] border-red-200 text-red-800 bg-red-100 sm:rounded-lg sm:mt-1"
+                                        >
+                                            <p x-text="events.filter(e => new Date(e.event_date).toDateString() === new Date(year, month, date).toDateString() && e.event_theme === 'red').length" class="hidden text-sm truncate leading-tight sm:block w-[40px]"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </template>
@@ -167,6 +165,7 @@
 
                     @include("theme::modals.read-event", [
                         "xShow" => "'course-details-modal-" . $schedule->course->id . "' in modalStateById && modalStateById['course-details-modal-" . $schedule->course->id . "']",
+                        "xVar"  => "modalStateById['course-details-modal-" . $schedule->course->id . "']",
                         "course" => $schedule->course,
                     ])
                 </li>
@@ -297,7 +296,15 @@
                 {
                     event_date: new Date('{{$schedule->course_opens_at}}'),
                     event_title: "{{$schedule->course->title}}",
-                    event_theme: "blue" // course
+                    event_theme: "blue"
+                },
+                @endforeach
+
+                @foreach ($reservations as $booking)
+                {
+                    event_date: new Date('{{$booking->course_opens_at}}'),
+                    event_title: "{{$booking->course->title}}",
+                    event_theme: "red"
                 },
                 @endforeach
 

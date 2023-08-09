@@ -26,4 +26,7 @@ Route::group([
     // SEARCH COURSES
     Route::get('/courses', '\App\Http\Controllers\API\CoursesController@search')->name('courses.search');
 
+    // CHARTS API
+    Route::get('/charts/audience', '\App\Http\Controllers\API\ChartsController@audience')->name('charts.audience');
+
 });

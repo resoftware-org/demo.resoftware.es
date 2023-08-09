@@ -16,7 +16,7 @@ module.exports = {
         'i-mdi-book-account',
         'i-mdi-calendar-clock',
         'i-mdi-certificate',
-        'i-mdi-chat-question-outline',
+        'i-mdi-chat-question-outline'
     ],
     theme: {
         extend: {

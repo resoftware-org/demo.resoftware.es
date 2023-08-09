@@ -1,9 +1,12 @@
 @php
+    $type = isset($type) ? $type : "text";
     $title = isset($title) ? $title : "No title set";
     $subtitle = isset($subtitle) ? $subtitle : "No subtitle set";
     $cta_link = isset($link) ? $link : "#";
     $cta_text = isset($cta_text) ? $cta_text : "No text set";
     $cta_external = isset($cta_external) && $cta_external ? 'target="_blank"' : "";
+    $enable_cta = $cta_link !== "#";
+    $chart = $type === "chart" && isset($chart) ? $chart : "income";
 
     $css_lg_m = !isset($position) || $position === "left" ? "mr-3" : "ml-3";
     $extra_css = isset($extra_css) ? $extra_css : ""
@@ -23,18 +26,27 @@
             </p>
         </div>
     </div>
-    <div class="relative p-5">
+    <div class="relative p-5 text-justify">
 
     @if ($type === "text")
         @foreach (($content ?? []) as $paragraph)
-        <p class="text-base leading-loose text-gray-500">{{$paragraph}}</p>
+        <p class="text-base leading-loose text-gray-500">{!! $paragraph !!}</p>
         @endforeach
+    @elseif ($type === "chart")
+        @include("theme::components.charts." . $chart, [])
     @endif
+
+    @if ($enable_cta)
         <br />
         <span class="inline-flex mt-5 rounded-md shadow-sm">
             <a href="{{ $cta_link }}" {{$cta_external}} class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50">
                 {{$cta_text}}
             </a>
         </span>
+    @endif
     </div>
 </div>
+
+@if ($type === "chart")
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+@endif

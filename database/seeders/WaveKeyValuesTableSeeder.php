@@ -38,7 +38,7 @@ class WaveKeyValuesTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 11,
-                'type' => 'select_dropdown',
+                'type' => 'hidden',
                 'keyvalue_id' => 1, // re:Software Support
                 'keyvalue_type' => 'users',
                 'key' => 'gender',

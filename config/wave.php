@@ -7,6 +7,12 @@ return [
     'date_of_birth',
     'gender',
     'title',
+    'website_url',
+    'facebook_url',
+    'instagram_url',
+    'twitter_url',
+    'twitch_url',
+    'youtube_url',
   ],
 
   'api' => [

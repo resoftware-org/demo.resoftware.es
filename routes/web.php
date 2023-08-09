@@ -32,8 +32,25 @@ Route::group([
     'as' => 'reapp.',
     'middleware' => ['auth', 'localized'],
 ], function() {
+    Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
     Route::get('library', '\App\Http\Controllers\LibraryController@index')->name('library');
     Route::get('calendar/{month?}/{year?}', '\App\Http\Controllers\CalendarController@index')->name('calendar');
-    Route::get('certificates', '\Wave\Http\Controllers\DashboardController@index')->name('certificates');
-    Route::get('support', '\Wave\Http\Controllers\DashboardController@index')->name('support');
+
+    Route::get('profile', function (Request $request) {
+        // current profile
+        $user = auth()->user();
+
+        // redirect to /@username
+        return redirect()->route('wave.profile', [
+            'username' => $user->username,
+        ]);
+    })->name('profile');
+});
+
+// re:App guest-available routes
+Route::group([
+    'as' => 'reapp.',
+    'middleware' => [/*noauth*/'localized'],
+], function() {
+    Route::get('support', '\App\Http\Controllers\SupportController@index')->name('support');
 });

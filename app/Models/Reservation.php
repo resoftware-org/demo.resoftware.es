@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+use App\Models\User;
+use App\Models\Course;
+use App\Models\Schedule;
+
 class Reservation extends Model
 {
     /**
@@ -89,7 +93,7 @@ class Reservation extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -97,7 +101,7 @@ class Reservation extends Model
      */
     public function course()
     {
-        return $this->belongsTo(Course::class, 'course_id');
+        return $this->belongsTo(Course::class);
     }
 
     /**
@@ -105,7 +109,7 @@ class Reservation extends Model
      */
     public function schedule()
     {
-        return $this->hasOne(Schedule::class, 'schedule_id');
+        return $this->hasOne(Schedule::class, 'id', 'schedule_id');
     }
 
     /**

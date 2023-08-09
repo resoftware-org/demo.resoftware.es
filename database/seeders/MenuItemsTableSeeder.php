@@ -89,10 +89,10 @@ class MenuItemsTableSeeder extends Seeder
             // CAUTION: when modifying the 'icon_class' field for THIS MENU, please
             // also modify the `resources/views/themes/tailwind/tailwind.config.js`
             // file and *safelist* all the icons that are listed below.
-            'dashboard' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-home-account', 'route' => 'wave.dashboard', 'order' => 1],
+            'dashboard' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-home-account', 'route' => 'reapp.dashboard', 'order' => 1],
             'library' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-book-account', 'route' => 'reapp.library', 'order' => 2],
             'calendar' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-calendar-clock', 'route' => 'reapp.calendar', 'order' => 3],
-            'certificates' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-certificate', 'route' => 'reapp.certificates', 'order' => 4],
+            'certificates' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-certificate', 'route' => 'reapp.profile', 'order' => 4],
             'support' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-chat-question-outline', 'route' => 'reapp.support', 'order' => 5],
         ];
 

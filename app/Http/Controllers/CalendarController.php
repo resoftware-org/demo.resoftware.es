@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Schedule;
-use App\Models\Reservation;
 
 class CalendarController extends Controller
 {
@@ -30,18 +29,18 @@ class CalendarController extends Controller
         $year  = $year === null ? date("Y") : $year;
         $month = $month === null ? date("m") : $month;
 
-        if ($user->subscribed("mentor") || $user->subscribed("college"))
-            // teachers see own schedules
-            $schedules = Schedule::byMonth($month)->byAuthor($user)->get();
-        else
-            // students see reserved schedules
-            $schedules = Schedule::byMonth($month)->withReservation($user)->get();
+        // events that "I created"
+        $schedules = Schedule::byMonth($month)->byAuthor($user)->get();
+
+        // events that "I join"
+        $reservations = Schedule::byMonth($month)->withReservation($user)->get();
 
         // prepare
         return view('theme::calendar.index', compact(
             "year",
             "month",
-            "schedules"
+            "schedules",
+            "reservations"
         ));
     }
 }

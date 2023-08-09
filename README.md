@@ -2,24 +2,24 @@
 
 ## Introduction
 
-**Connect, Play, Earn - re:Play Your Way to Social Gaming Glory!**
+**Connect, Play, Earn - MilEstudios Your Way to Social Gaming Glory!**
 
-Welcome to [re:Play](https://play.resoftware.es), the ultimate social gaming platform
+Welcome to [MilEstudios](https://play.resoftware.es), the ultimate social gaming platform
 that brings friends and players together like never before! Step into a vibrant world
 where gaming meets social interaction, and embark on thrilling adventures that transcend
 traditional boundaries.
 
-With re:Play, you can connect with friends, old and new, from all corners of the globe,
+With MilEstudios, you can connect with friends, old and new, from all corners of the globe,
 and experience the joy of playing together in real-time. Explore a vast array of games
 catering to all tastes and skill levels, whether you're a casual gamer or a seasoned pro.
 
 Compete in challenges, form teams, and celebrate victories together as you unlock
 achievements and rise through the ranks. Join the social gaming revolution and let
-**re:Play** redefine the way you play, connect, and experience the joys of gaming.
+**MilEstudios** redefine the way you play, connect, and experience the joys of gaming.
 
 ### Features
 
-[re:Play](https://play.resoftware.es) uses a Software as a Service Starter Kit based on [Wave](https://devdojo.com/wave). It is built with [Laravel](https://laravel.com), [Voyager](https://voyager.devdojo.com), [TailwindCSS](https://tailwindcss.com), and a few other awesome technologies. Here are some of the awesome features ✨:
+[MilEstudios](https://play.resoftware.es) uses a Software as a Service Starter Kit based on [Wave](https://devdojo.com/wave). It is built with [Laravel](https://laravel.com), [Voyager](https://voyager.devdojo.com), [TailwindCSS](https://tailwindcss.com), and a few other awesome technologies. Here are some of the awesome features ✨:
 
  - [Authentication](https://play.resoftware.es/docs/features/authentication)
  - [User Profiles](https://play.resoftware.es/docs/features/user-profiles)
@@ -104,7 +104,7 @@ php artisan db:seed
 
 🎉 And that's it! You will now be able to visit your URL and see your re:Software application up and running.
 
-## Authentication
+## Development
 
 The backend can be accessed *only* using user accounts that are assigned the `admin`-role.
 
@@ -115,6 +115,52 @@ The **default admin credentials** are:
 
 Please, make sure to edit these *before* you deploy this software in production.
 
+### Reset database and re-seed
+
+```
+php artisan migrate:refresh
+php artisan db:seed
+
+# include demo data
+php artisan db:seed --class="ReplayDataSeeder"
+```
+
+### API Authentication
+
+To perform an authentication operation using the API, you can use **curl**. Execute
+the following command to start the authentication and to receive a **Bearer token**
+from the API. You will need this access token for subsequent requests to the API.
+
+*Example:*
+```
+curl -X POST http://demo.resoftware.loc:8000/api/v1/wave/login \
+     -H 'Content-Type: application/json' \
+     -d '{"email": "demo.david@resoftware.es", "password": "NotSoSecureMentorPassword"}'
+```
+
+The response of this command (if you provide correct credentials), should look somewhat
+similar to the following:
+
+*Example:*
+```
+{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZGVtby5yZXNvZnR3YXJlLmxvYzo4MDAwL2FwaS92MS93YXZlL2xvZ2luIiwiaWF0IjoxNjkxMzk3MTg1LCJleHAiOjE2OTE0MDA3ODUsIm5iZiI6MTY5MTM5NzE4NSwianRpIjoiNXIzTEg1bW16b2lZRjlkUSIsInN1YiI6IjYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.oPZMEZr5LKlItnVEE3DwViRjBA99MtANW-Z5qrS_XBQ","token_type":"bearer","expires_in":60}
+```
+
+**Subsequent requests to the API must include the access token as a Bearer token in the request.**
+
+### API Requests
+
+Now that you have authenticated using the API, you can also execute API requests calling
+specific endpoints, including: `/api/v1/user` and `/api/v1/courses`.
+
+An example request *including a valid access token* looks as follows:
+
+*Example:*
+```
+curl -X GET http://demo.resoftware.loc:8000/api/v1/courses?term=abc \
+     -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZGVtby5yZXNvZnR3YXJlLmxvYzo4MDAwL2FwaS92MS93YXZlL2xvZ2luIiwiaWF0IjoxNjkxMzk3MTg1LCJleHAiOjE2OTE0MDA3ODUsIm5iZiI6MTY5MTM5NzE4NSwianRpIjoiNXIzTEg1bW16b2lZRjlkUSIsInN1YiI6IjYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.oPZMEZr5LKlItnVEE3DwViRjBA99MtANW-Z5qrS_XBQ'
+```
+
 ## Documentation
 
 Checkout the [official documentation here](https://play.resoftware.es/docs).
@@ -123,7 +169,7 @@ Checkout the [official documentation here](https://play.resoftware.es/docs).
 
 This software is released under the [MIT](./LICENSE) License.
 
-Copyright © 2023-present re:Play by re:Software SL (https://resoftware.es).
+Copyright © 2023-present MilEstudios by re:Software SL (https://resoftware.es).
 Copyright © DevDojo (https://devdojo.com).
 
 

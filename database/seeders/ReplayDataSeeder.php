@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\Download;
 use App\Models\Schedule;
+use App\Models\Reservation;
 
 class ReplayDataSeeder extends Seeder
 {
@@ -84,6 +85,7 @@ class ReplayDataSeeder extends Seeder
         $this->createSchedules(
             $example_01,
             [
+                Carbon::now(), // today
                 Carbon::now()->addDays(1),
                 Carbon::now()->addDays(3),
                 Carbon::now()->addDays(5),
@@ -95,12 +97,14 @@ class ReplayDataSeeder extends Seeder
                 Carbon::now()->addDays(17),
                 Carbon::now()->addDays(19),
                 Carbon::now()->addDays(21),
-            ]
+            ],
+            true
         );
 
         $this->createSchedules(
             $example_02,
             [
+                Carbon::now(), // today
                 Carbon::now()->addDays(1),
                 Carbon::now()->addDays(2),
                 Carbon::now()->addDays(3),
@@ -112,7 +116,8 @@ class ReplayDataSeeder extends Seeder
                 Carbon::now()->addDays(9),
                 Carbon::now()->addDays(10),
                 Carbon::now()->addDays(11),
-            ]
+            ],
+            true
         );
 
         $this->createSchedules(
@@ -132,7 +137,8 @@ class ReplayDataSeeder extends Seeder
                 Carbon::now()->addDays(11),
                 Carbon::now()->addDays(13),
                 Carbon::now()->addDays(15),
-            ]
+            ],
+            true
         );
     }
 
@@ -173,10 +179,11 @@ class ReplayDataSeeder extends Seeder
      */
     protected function createSchedules(
         Course $course,
-        array $dates
+        array $dates,
+        bool $withReservation = false
     ) {
         foreach ($dates as $schedule_at):
-            Schedule::create([
+            $schedule = Schedule::create([
                 'author_id' => $course->author_id,
                 'course_id' => $course->id,
                 'meeting_url' => 'https://live.milestudios.es/@' . $course->user->username,
@@ -185,6 +192,22 @@ class ReplayDataSeeder extends Seeder
                 'course_starts_at' => new Carbon($schedule_at),
                 'course_ends_at' => (new Carbon($schedule_at))->addHours(4),
             ]);
+
+            if ($withReservation === true):
+                $users = User::where("users.email", "!=", $course->user->email)->get();
+
+                foreach ($users as $student):
+                    $roulette = rand(0,1) == 1;
+                    if ($roulette !== true)
+                        continue;
+
+                    Reservation::create([
+                        "user_id" => $student->id,
+                        "course_id" => $course->id,
+                        "schedule_id" => $schedule->id,
+                    ]);
+                endforeach;
+            endif;
         endforeach;
     }
 }

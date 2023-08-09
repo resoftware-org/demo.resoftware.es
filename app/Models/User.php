@@ -3,11 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use Wave\User as Authenticatable;
+
+use App\Models\Course;
+use App\Models\Reservation;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * A list of IDs mapped to their respective roles' slug.
@@ -78,5 +82,48 @@ class User extends Authenticatable
     public function courses()
     {
         return $this->hasMany(Course::class, 'author_id', 'id');
+    }
+
+    /**
+     *
+     */
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'user_id', 'id');
+    }
+
+    /**
+     *
+     */
+    public function attendances()
+    {
+        return $this->hasManyThrough(
+            Course::class,
+            Reservation::class,
+            'user_id', // key to resolve reservations
+            'id', // key to resolve courses
+            'id', // local key (user id)
+            'course_id' // foreign key to resolve courses
+        );
+    }
+
+    /**
+     *
+     */
+    public function distinct_courses_taken()
+    {
+        return $this->attendances()
+            ->distinct()
+            ->get();
+    }
+
+    /**
+     *
+     */
+    public function getTitledNameAttribute()
+    {
+        $title = $this->profile("title");
+        if (!empty($title)) $title .= " ";
+        return sprintf("%s%s", $title, $this->name);
     }
 }
