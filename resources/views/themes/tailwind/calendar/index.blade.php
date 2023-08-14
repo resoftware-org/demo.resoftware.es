@@ -6,7 +6,7 @@
 
 <!-- reApp Calendar -->
 <div
-    class="w-full flex flex-col px-4 mx-auto my-3 lg:flex-row max-w-7xl sm:px-8 sm:my-6 xl:px-5"
+    class="w-full flex flex-col px-4 mx-auto my-3 lg:flex-row max-w-7xl sm:px-8 sm:my-0 xl:px-5"
     x-data="reapp_calendar()"
     x-init="[initializeDate()]"
     x-cloak
@@ -127,16 +127,18 @@
             </a>
         </div>
 
+        @php $events = $schedules->merge($reservations)->sortBy("course_opens_at"); @endphp
+
         <div class="flow-root">
 
-        @if($schedules->isEmpty())
+        @if($events->isEmpty())
             <p class="py-6">{{__('replay.calendar.empty_message')}}</p>
         @endempty
 
-        @if (isset($schedules))
+        @if (isset($events))
             <ul role="list" class="h-full">
 
-            @foreach ($schedules->slice(0, 6) as $schedule)
+            @foreach ($events->slice(0, 6) as $schedule)
                 <li
                     x-show="current_page === 1"
                     x-on:click="toggleModalBox('course-details-modal-{{$schedule->course->id}}')"
@@ -171,9 +173,9 @@
                 </li>
             @endforeach
 
-            @if ($schedules->count() > 6)
+            @if ($events->count() > 6)
             @php $page = 2; $i = 0; @endphp
-            @foreach ($schedules->slice(6) as $schedule)
+            @foreach ($events->slice(6) as $schedule)
                 @if ($i === 6) @php $page++; @endphp @endif
                 <li 
                     x-show="current_page === {{$page}}"
@@ -212,10 +214,10 @@
 
             </ul>
 
-            @if ($schedules->count() > 6)
+            @if ($events->count() > 6)
             <div class="flex flex-wrap justify-center mt-6 lg:mt-8">
                 <span class="text-base font-medium">{{__('replay.calendar.sidebar.page')}}:</span>
-                @for ($i = 0; $i < ($schedules->count() / 6); $i++)
+                @for ($i = 0; $i < ($events->count() / 6); $i++)
                     @php $page = $i+1; @endphp
                 <span
                     @click="current_page = {{$page}}"

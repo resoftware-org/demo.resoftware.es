@@ -96,17 +96,15 @@ class MenuItemsTableSeeder extends Seeder
             'support' => ['menu_id' => $reapp_menu_id, 'target' => '_self', 'icon_class' => 'mdi-chat-question-outline', 'route' => 'reapp.support', 'order' => 5],
         ];
 
-        /* 1. Home */
-        /* 2. Features */
-        /* 3. Testimonials */
-        /* 4. Pricing */
-        /* 5. Blog */
+        /* 1. Features */
+        /* 2. Testimonials */
+        /* 3. Pricing */
+        /* 4. Blog */
         $spec_guest = [
-            'Home' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '', 'order' => 1],
-            'Features' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#features', 'order' => 2],
-            'Testimonials' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#testimonials', 'order' => 3],
-            'Pricing' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#pricing', 'order' => 4],
-            'Blog' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'route' => 'wave.blog', 'order' => 5],
+            'features' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#features', 'order' => 2],
+            'testimonials' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#testimonials', 'order' => 3],
+            'pricing' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'url' => '/#pricing', 'order' => 4],
+            'blog' => ['menu_id' => $guest_menu_id, 'target' => '_self', 'icon_class' => null, 'route' => 'wave.blog', 'order' => 5],
         ];
 
         $this->createMenuItems($spec_admin);
@@ -118,7 +116,8 @@ class MenuItemsTableSeeder extends Seeder
 
         // create menu items from spec
         foreach ($spec as $title => $main_menu_config):
-            $main_menu_config['url'] = '';
+            if (!empty($main_menu_config['children']) || !isset($main_menu_config['url']))
+                $main_menu_config['url'] = '';
 
             // create main menu entry
             $main = Voyager::model('MenuItem')->updateOrCreate(

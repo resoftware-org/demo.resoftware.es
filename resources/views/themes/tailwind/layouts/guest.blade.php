@@ -71,7 +71,12 @@
                 </div>
 
                 <!-- This is the homepage nav when a user is not logged in -->
-                @include('theme::menus.guest')
+                @php
+                    $menu = Voyager::model('Menu')->where("name", "guest-menu")->first();
+                @endphp
+
+                <!-- Top menu bar -->
+                @include("theme::menus.guest", ["menu" => $menu])
             </div>
         </div>
 

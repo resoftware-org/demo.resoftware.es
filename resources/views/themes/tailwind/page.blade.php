@@ -1,7 +1,6 @@
-@extends('theme::layouts.app')
+@extends('theme::layouts.guest')
 
 @section('content')
-
 
     <div class="py-20 mx-auto max-w-7xl">
         <article id="page-{{ $page->id }}" class="max-w-4xl px-5 mx-auto prose prose-xl lg:prose-2xl lg:px-0">

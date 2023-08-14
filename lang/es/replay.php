@@ -99,7 +99,7 @@ return [
         'at_time_prefix' => 'a las',
 
         'demo_text_p1' => 'Estás viendo una demo de :app de re:Software S.L.',
-        'demo_text_p2' => '¿Quiere empezar con su propio Software as a Service Starter Kit?',
+        'demo_text_p2' => '¿Quiere empezar con su propio Software as a Service para eLearning?',
     ],
     'dashboard' => [
         'intro_card_1' => 'Este panel contiene métricas clave sobre tu cuenta en esta plataforma. ¡Asegúrate de volver aquí de vez en cuando!',

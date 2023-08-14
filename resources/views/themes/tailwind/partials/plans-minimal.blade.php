@@ -13,11 +13,11 @@
 
                 <div class="px-10 mt-5">
                     <span class="font-mono text-5xl font-bold">€{{ $plan->price }}</span>
-                    <span class="text-lg font-bold text-gray-500">per month</span>
+                    <span class="text-lg font-bold text-gray-500">{{__('replay.guest.pricing.plans_interval')}}</span>
                 </div>
 
                 <div class="px-10 mt-6 pb-9">
-                    <p class="text-lg leading-7 text-gray-500">{{ $plan->description }}</p>
+                    <p class="text-lg leading-7 text-gray-500">{{ __($plan->description) }}</p>
                 </div>
 
                 <div class="relative px-10 pt-0 pb-12 mt-auto text-gray-700">
@@ -31,7 +31,7 @@
                                     </svg>
 
                                     <span>
-                                        {{ $feature }}
+                                        {{ __(trim($feature)) }}
                                     </span>
                                 </span>
                             </li>
@@ -45,16 +45,16 @@
 
                     @subscribed($plan->slug)
                         <div class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold transition duration-150 ease-in-out bg-gray-200 border border-transparent cursor-default text-wave-600 focus:outline-none disabled:opacity-25" disabled>
-                            You're subscribed to this plan
+                            {{__('replay.guest.pricing.subscribed_to_this_plan')}}
                         </div>
                     @notsubscribed
                         @subscriber
                             <div onclick="switchPlans('{{ $plan->plan_id }}', '{{ $plan->name }}')" class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition duration-150 ease-in-out @if($plan->default){{ ' bg-gradient-to-r from-wave-600 to-indigo-500 hover:from-wave-500 hover:to-indigo-400' }}@else{{ 'bg-gray-800 hover:bg-gray-700 active:bg-gray-900 focus:border-gray-900 focus:shadow-outline-gray' }}@endif border border-transparent cursor-pointer focus:outline-none disabled:opacity-25">
-                                Switch Plans
+                                {{__('replay.guest.pricing.switch_plans')}}
                             </div>
                         @notsubscriber
                             <div data-plan="{{ $plan->plan_id }}" class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition duration-150 ease-in-out @if($plan->default){{ ' bg-gradient-to-r from-wave-600 to-indigo-500 hover:from-wave-500 hover:to-indigo-400' }}@else{{ 'bg-gray-800 hover:bg-gray-700 active:bg-gray-900 focus:border-gray-900 focus:shadow-outline-gray' }}@endif border border-transparent cursor-pointer checkout focus:outline-none disabled:opacity-25">
-                                Get Started
+                                {{__('replay.guest.pricing.get_started')}}
                             </div>
                         @endsubscriber
                     @endsubscribed

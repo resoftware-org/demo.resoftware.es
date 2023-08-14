@@ -75,7 +75,7 @@
     @include("theme::menus.app", ["menu" => $menu])
 
     <!-- Content slots -->
-    <div class="w-full flex flex-col h-screen overflow-y-hidden">
+    <div class="w-full flex flex-col h-screen">
 
         @if (config("wave.demo", false))
             @include("theme::partials.demo-header")
@@ -91,7 +91,7 @@
 
         <!-- Content container -->
         <div class="w-full min-h-screen overflow-x-hidden border-t flex flex-col">
-            <main class="w-full flex-grow p-6">
+            <main class="w-full flex-grow p-6 sm:py-3">
                 @yield('content')
             </main>
 

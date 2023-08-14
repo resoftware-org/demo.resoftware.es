@@ -44,7 +44,7 @@ class ReplayDataSeeder extends Seeder
             . "skills, our expert instructors will guide you every step of the "
             . "way. Join now and discover the beauty and power of mathematics!",
             "courses/July2023/online-course-1.png",
-            true
+            true // featured
         );
 
         $example_02 = $this->createCourse(
@@ -60,7 +60,7 @@ class ReplayDataSeeder extends Seeder
             . "lessons and hands-on activities will ignite your love for learning. "
             . "Join us today and embark on a thrilling scientific adventure!",
             "courses/July2023/online-course-2.png",
-            true
+            true // featured
         );
 
         $example_03 = $this->createCourse(
@@ -76,7 +76,7 @@ class ReplayDataSeeder extends Seeder
             . "about the natural world, our course will nurture your passion for biology. "
             . "Enroll now and uncover the secrets of life!",
             "courses/July2023/online-course-3.png",
-            true
+            true // featured
         );
 
         /***********************************************************************

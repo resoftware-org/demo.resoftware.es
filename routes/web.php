@@ -35,6 +35,7 @@ Route::group([
     Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
     Route::get('library', '\App\Http\Controllers\LibraryController@index')->name('library');
     Route::get('calendar/{month?}/{year?}', '\App\Http\Controllers\CalendarController@index')->name('calendar');
+    Route::get('p/{page}', '\App\Http\Controllers\PageController@page')->name('page');
 
     Route::get('profile', function (Request $request) {
         // current profile
