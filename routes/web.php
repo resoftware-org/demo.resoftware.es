@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use Wave\Facades\Wave;
 
+if (App::environment('production', 'staging')) {
+    URL::forceScheme('https');
+}
+
 // Authentication routes
 Auth::routes();
 
